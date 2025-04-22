@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "ingredient": "beeten:beetroot_tiles",
+  "result": {
+    "id": "beeten:cooked_beetroot_tiles"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "beeten:block/heart_beets_stage2"
+  }
+}

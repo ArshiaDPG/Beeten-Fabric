@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.5,
+  "ingredient": "beeten:beetroot_tiles",
+  "result": {
+    "id": "beeten:cooked_beetroot_tiles"
+  }
+}

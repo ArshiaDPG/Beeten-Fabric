@@ -1,0 +1,7 @@
+{
+  "parent": "beeten:block/template_beetroot_sprout",
+  "textures": {
+    "side": "beeten:block/beetroot_sprout_side",
+    "top": "beeten:block/beetroot_sprout_top"
+  }
+}

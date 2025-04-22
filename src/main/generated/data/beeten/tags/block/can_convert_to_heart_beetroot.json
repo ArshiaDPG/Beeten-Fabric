@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:beetroots",
+    {
+      "id": "farmersdelight:wild_beetroots",
+      "required": false
+    }
+  ]
+}

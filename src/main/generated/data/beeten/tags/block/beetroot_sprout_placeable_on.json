@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#minecraft:dirt",
+    "#minecraft:sand",
+    "minecraft:farmland",
+    "minecraft:clay",
+    "beeten:beetroot_heart",
+    "beeten:beetroot_block",
+    "beeten:beetroot_tiles",
+    "beeten:cooked_beetroot_block",
+    "beeten:cooked_beetroot_tiles"
+  ]
+}

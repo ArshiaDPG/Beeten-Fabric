@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_heart_beet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "beeten:heart_beet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "beeten:beetroot_heart"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_heart_beet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "beeten:beetroot_heart"
+    ]
+  }
+}

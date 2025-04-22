@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_beetroot_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "beeten:beetroot_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "beeten:beetroot_tiles"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_beetroot_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "beeten:beetroot_tiles"
+    ]
+  }
+}

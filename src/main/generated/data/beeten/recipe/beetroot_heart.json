@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "beeten:heart_beet",
+    "L": "beeten:beetroot_block"
+  },
+  "pattern": [
+    "BBB",
+    "BLB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "beeten:beetroot_heart"
+  }
+}

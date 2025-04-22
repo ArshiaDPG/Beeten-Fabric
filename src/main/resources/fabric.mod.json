@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "beeten",
+  "version": "${version}",
+
+  "name": "Beeten",
+  "description": "",
+  "authors": [
+    "DigitalPear"
+  ],
+  "contact": {},
+
+  "license": "Apache-2.0",
+  "icon": "assets/beeten/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": ["net.digitalpear.beeten.client.BeetenClient"],
+    "main": ["net.digitalpear.beeten.Beeten"],
+    "fabric-datagen": ["net.digitalpear.beeten.BeetenDataGenerator"]
+  },
+  "mixins": [
+    "beeten.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

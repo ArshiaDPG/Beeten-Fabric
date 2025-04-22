@@ -1,0 +1,16 @@
+{
+  "advancements.story.obtain_heart_beet.description": "Obtain a Heart Beet by converting beetroot using a Heart of Beetroot.",
+  "advancements.story.obtain_heart_beet.title": "Good for the Heart",
+  "block.beeten.beet_roots": "Beet Roots",
+  "block.beeten.beetroot_block": "Block of Beetroot",
+  "block.beeten.beetroot_heart": "Heart of Beetroot",
+  "block.beeten.beetroot_leaves": "Beetroot Leaves",
+  "block.beeten.beetroot_sprout": "Beetroot Sprout",
+  "block.beeten.beetroot_tiles": "Beetroot Tiles",
+  "block.beeten.cooked_beetroot_block": "Cooked Beetroot",
+  "block.beeten.cooked_beetroot_tiles": "Cooked Beetroot Tiles",
+  "block.beeten.heart_beets": "Heart Beets",
+  "gamerule.maxBeetHealthBoost": "Max health boost from Heart Beets",
+  "gamerule.maxBeetHealthBoost.description": "The max amount of health that an entity can get from eating heart beets.",
+  "item.beeten.heart_beet": "Heart Beet"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "beeten:block/cooked_beetroot_tiles_top",
+    "side": "beeten:block/cooked_beetroot_tiles"
+  }
+}
