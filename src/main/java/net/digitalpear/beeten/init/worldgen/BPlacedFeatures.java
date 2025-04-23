@@ -39,7 +39,7 @@ public class BPlacedFeatures {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
         RegistryEntry<ConfiguredFeature<?, ?>> bigBeetFeature = registryEntryLookup.getOrThrow(BConfiguredFeatures.BIG_BEETROOT);
 
-        PlacedFeatures.register(featureRegisterable, BIG_BEETROOT, bigBeetFeature, treeModifiersBuilder(RarityFilterPlacementModifier.of(2)).build());
+        PlacedFeatures.register(featureRegisterable, BIG_BEETROOT, bigBeetFeature, treeModifiersBuilder(RarityFilterPlacementModifier.of(4)).build());
     }
 
 

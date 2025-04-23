@@ -18,7 +18,8 @@ public class BItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).add(
                 BBlocks.BEETROOT_BLOCK.asItem(),
                 BBlocks.BEETROOT_HEART.asItem(),
-                BBlocks.COOKED_BEETROOT_BLOCK.asItem());
+                BBlocks.COOKED_BEETROOT_BLOCK.asItem()
+        );
         getOrCreateTagBuilder(ItemTags.LEAVES).add(BBlocks.BEETROOT_LEAVES.asItem());
     }
 }

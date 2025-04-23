@@ -37,28 +37,28 @@ public class BigBeetrootFeature extends Feature<BigBeetrootFeatureConfig> {
             return false;
         }
 
-        if (BlockPos.stream(startPos, startPos.up(config.getFirstBaseHeight().get(random))).anyMatch(pos -> !replaceable(world.getBlockState(pos)) && !world.getBlockState(pos).isOf(BBlocks.BEETROOT_SPROUT))){
+        if (BlockPos.stream(startPos, startPos.up(config.firstBaseHeight().get(random))).anyMatch(pos -> !replaceable(world.getBlockState(pos)) && !world.getBlockState(pos).isOf(BBlocks.BEETROOT_SPROUT))){
             return false;
         }
 
         placeRoots(world, startPos, random, config);
         BlockPos branchPos = startPos;
-        BlockPos.stream(startPos.add(-1, -config.getFirstBaseHeight().get(random)/2, -1), startPos.add(1, config.getFirstBaseHeight().get(random)/2, 1)).forEach(pos -> {
+        BlockPos.stream(startPos.add(-1, -config.firstBaseHeight().get(random)/2, -1), startPos.add(1, config.firstBaseHeight().get(random)/2, 1)).forEach(pos -> {
             if (!world.getBlockState(pos.down()).isReplaceable() && random.nextBoolean()){
-                setBlock(world, pos, config.getBaseBlock().get(random, pos));
+                setBlock(world, pos, config.baseBlock().get(random, pos));
             }
         });
         /*
             Place Base
          */
-        for (int i = -2; i< config.getFirstBaseHeight().get(random) + config.getSecondBaseHeight().get(random); i++){
-            if (setBlock(world, startPos.up(i), config.getBaseBlock().get(random, startPos.up(i)))){
+        for (int i = -2; i< config.firstBaseHeight().get(random) + config.secondBaseHeight().get(random); i++){
+            if (setBlock(world, startPos.up(i), config.baseBlock().get(random, startPos.up(i)))){
                 branchPos = branchPos.up();
             }
         }
         for (Direction direction : HORIZONTAL_DIRECTIONS) {
-            for (int i = 0; i < config.getSecondBaseHeight().get(random); i++) {
-                setBlock(world, startPos.offset(direction).up(i), config.getBaseBlock().get(random, startPos.offset(direction).up(i)));
+            for (int i = 0; i < config.secondBaseHeight().get(random); i++) {
+                setBlock(world, startPos.offset(direction).up(i), config.baseBlock().get(random, startPos.offset(direction).up(i)));
             }
         }
 
@@ -67,73 +67,73 @@ public class BigBeetrootFeature extends Feature<BigBeetrootFeatureConfig> {
          */
         for (Direction direction : HORIZONTAL_DIRECTIONS) {
             int branchOffset = 1;
-            int branchHeight = config.getBranchLength().get(random);
-            int leafHeight = config.getLeafHeight().get(random);
+            int branchHeight = config.branchLength().get(random);
+            int leafHeight = config.leafHeight().get(random);
             Direction faceDirection = direction.rotateYClockwise();
 
             for (int i = 0; i<branchHeight; i++){
-                if (!setBlock(world, branchPos.offset(direction, branchOffset).up(i), config.getBaseBlock().get(random, branchPos.offset(direction, branchOffset).up(i)))) {
+                if (!setBlock(world, branchPos.offset(direction, branchOffset).up(i), config.baseBlock().get(random, branchPos.offset(direction, branchOffset).up(i)))) {
                     break;
                 }
                 else {
                     if (i > leafHeight){
                         BlockPos pos = branchPos.offset(direction, branchOffset).up(i);
-                        setBlock(world, pos.offset(faceDirection, -1), config.getLeaves().get(random, pos));
-                        setBlock(world, pos.offset(faceDirection, 1), config.getLeaves().get(random, pos));
+                        setBlock(world, pos.offset(faceDirection, -1), config.leaves().get(random, pos));
+                        setBlock(world, pos.offset(faceDirection, 1), config.leaves().get(random, pos));
                     }
                     if (random.nextBoolean() && i < branchHeight-1){
                         if (random.nextBoolean()){
-                            setBlock(world, branchPos.offset(direction, branchOffset).up(i+1), config.getSprouts().get(random, branchPos.offset(direction, branchOffset).up(i)));
+                            setBlock(world, branchPos.offset(direction, branchOffset).up(i+1), config.sprouts().get(random, branchPos.offset(direction, branchOffset).up(i)));
                         }
-                        setBlock(world, branchPos.offset(direction, branchOffset).up(i-1), config.getHangingRoots().get(random, branchPos.offset(direction, branchOffset).up(i-1)));
+                        setBlock(world, branchPos.offset(direction, branchOffset).up(i-1), config.hangingRoots().get(random, branchPos.offset(direction, branchOffset).up(i-1)));
                         branchOffset++;
                     }
                 }
             }
             placeLeaf(world, branchPos.offset(direction, branchOffset).up(branchHeight-2), random, direction, config);
         }
-        if (random.nextFloat() < config.getHeartChance().get(random)){
-            world.setBlockState(startPos.up(), config.getHeart().get(random, startPos.up()), 3);
+        if (random.nextFloat() < config.heartChance().get(random)){
+            world.setBlockState(startPos.up(), config.heart().get(random, startPos.up()), 3);
         }
         return true;
     }
 
     public void placeLeaf(StructureWorldAccess world, BlockPos startPos, Random random, Direction direction, BigBeetrootFeatureConfig config){
-        int leafHeight = config.getLeafHeight().get(random);
+        int leafHeight = config.leafHeight().get(random);
         Direction faceDirection = direction.rotateYClockwise();
 
         Direction tiltDirection = random.nextBoolean() ? faceDirection.rotateYClockwise() : faceDirection.rotateYCounterclockwise();
         int tiltAmount = 0;
 
         Vec3i blobSize = Vec3i.ZERO;
-        blobSize.offset(faceDirection, config.getLeafHeight().get(random));
+        blobSize.offset(faceDirection, config.leafHeight().get(random));
         blobSize.offset(Direction.UP, random.nextBetween(2, 3));
-        blobSize.offset(faceDirection.rotateYClockwise(), config.getLeafHeight().get(random));
+        blobSize.offset(faceDirection.rotateYClockwise(), config.leafHeight().get(random));
 
-        placeBlob(world, startPos, random, blobSize.getX(), blobSize.getY(), blobSize.getZ(), config.getLeaves(), BigBeetrootFeature::replaceable);
+        placeBlob(world, startPos, random, blobSize.getX(), blobSize.getY(), blobSize.getZ(), config.leaves(), BigBeetrootFeature::replaceable);
         for (int i = 0; i<leafHeight; i++){
             if (random.nextFloat() < 0.1f && i>leafHeight-1){
                 tiltAmount++;
                 BlockPos pos = startPos.up(i).offset(tiltDirection, tiltAmount);
-                setBlock(world, pos, config.getLeaves().get(random, pos));
-                setBlock(world, pos.offset(faceDirection, -1), config.getLeaves().get(random, pos));
-                setBlock(world, pos.offset(faceDirection, 1), config.getLeaves().get(random, pos));
+                setBlock(world, pos, config.leaves().get(random, pos));
+                setBlock(world, pos.offset(faceDirection, -1), config.leaves().get(random, pos));
+                setBlock(world, pos.offset(faceDirection, 1), config.leaves().get(random, pos));
             }
             BlockPos pos = startPos.up(i).offset(tiltDirection, tiltAmount);
-            setBlock(world, pos, config.getLeaves().get(random, pos));
-            setBlock(world, pos.offset(faceDirection, -1), config.getLeaves().get(random, pos));
-            setBlock(world, pos.offset(faceDirection, 1), config.getLeaves().get(random, pos));
+            setBlock(world, pos, config.leaves().get(random, pos));
+            setBlock(world, pos.offset(faceDirection, -1), config.leaves().get(random, pos));
+            setBlock(world, pos.offset(faceDirection, 1), config.leaves().get(random, pos));
         }
         BlockPos pos = startPos.offset(tiltDirection, tiltAmount).up(leafHeight);
-        setBlock(world, pos, config.getLeaves().get(random, pos));
+        setBlock(world, pos, config.leaves().get(random, pos));
     }
 
     public void placeRoots(StructureWorldAccess world, BlockPos startPos, Random random, BigBeetrootFeatureConfig config){
         for(int i = 0; i < 3; ++i) {
-            int sizeX = config.getRootsRadius().get(random);
-            int sizeY = config.getRootsRadius().get(random);
-            int sizeZ = config.getRootsRadius().get(random);
-            placeBlob(world, startPos, random, sizeX, sizeY, sizeZ, config.getRoots(), state -> state.isIn(BTags.Blocks.BIG_BEETROOTS_CAN_REPLACE));
+            int sizeX = config.rootsRadius().get(random);
+            int sizeY = config.rootsRadius().get(random);
+            int sizeZ = config.rootsRadius().get(random);
+            placeBlob(world, startPos, random, sizeX, sizeY, sizeZ, config.roots(), state -> state.isIn(BTags.Blocks.BIG_BEETROOTS_CAN_REPLACE));
             startPos = startPos.add(-1 + random.nextInt(sizeX), -random.nextInt(2), -1 + random.nextInt(2));
         }
     }

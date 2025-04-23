@@ -21,16 +21,27 @@ public class BeetrootHeartBlock extends PillarBlock {
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (random.nextInt(1) == 0){
             for (int i = 0; i<random.nextBetween(1, MAX_ATTEMPTS); i++){
-                int x = random.nextBetween(-H_RANGE, H_RANGE);
-                int y = random.nextBetween(-V_RANGE, V_RANGE);
-                int z = random.nextBetween(-H_RANGE, H_RANGE);
+                int x = random.nextBetween(-getHorizontalRange(), getHorizontalRange());
+                int y = random.nextBetween(-getVerticalRange(), getVerticalRange());
+                int z = random.nextBetween(-getHorizontalRange(), getHorizontalRange());
                 BlockPos currentPos = pos.add(x, y, z);
                 BlockState chosenState = world.getBlockState(currentPos);
                 if (chosenState.isIn(BTags.Blocks.CAN_CONVERT_T0_HEART_BEETROOTS) && BBlocks.HEART_BEETS.getDefaultState().canPlaceAt(world, currentPos)){
-                    world.setBlockState(currentPos, BBlocks.HEART_BEETS.getDefaultState());
+                    BlockState placedState = BBlocks.HEART_BEETS.getDefaultState();
+                    if (chosenState.contains(HearBeetsBlock.AGE)){
+                        placedState.with(HearBeetsBlock.AGE, chosenState.get(HearBeetsBlock.AGE));
+                    }
+                    world.setBlockState(currentPos, placedState);
                     world.syncWorldEvent(WorldEvents.BONE_MEAL_USED, currentPos, 15);
                 }
             }
         }
+    }
+
+    public int getHorizontalRange(){
+        return H_RANGE;
+    }
+    public int getVerticalRange(){
+        return V_RANGE;
     }
 }

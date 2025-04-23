@@ -5,22 +5,32 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.digitalpear.beeten.init.BConsumeEffects;
 import net.digitalpear.beeten.init.BGameRules;
+import net.minecraft.component.ComponentsAccess;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.ClampedEntityAttribute;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.consume.ConsumeEffect;
+import net.minecraft.item.tooltip.TooltipAppender;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.text.Texts;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public record ChangeAttributeConsumeEffect(Identifier identifier, RegistryEntry<EntityAttribute> attribute, double value, EntityAttributeModifier.Operation operation) implements ConsumeEffect {
     public static final MapCodec<ChangeAttributeConsumeEffect> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(

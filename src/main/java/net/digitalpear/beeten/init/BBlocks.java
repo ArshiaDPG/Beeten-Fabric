@@ -32,11 +32,11 @@ public class BBlocks {
 
     private static AbstractBlock.Settings beetrootSettings(){
         return AbstractBlock.Settings.create()
-                .burnable()
                 .mapColor(MapColor.RED)
                 .strength(1.5f)
                 .sounds(BlockSoundGroup.CORAL);
     }
+
     private static AbstractBlock.Settings cookedBeetrootSettings(){
         return beetrootSettings().mapColor(MapColor.DARK_CRIMSON);
     }
@@ -45,7 +45,8 @@ public class BBlocks {
     public static final Block BEETROOT_TILES = register("beetroot_tiles", PillarBlock::new, beetrootSettings());
     public static final Block BEET_ROOTS = register("beet_roots", HangingRootsBlock::new, AbstractBlock.Settings.copy(Blocks.HANGING_ROOTS));
 
-    public static final Block BEETROOT_HEART = register("beetroot_heart", BeetrootHeartBlock::new, beetrootSettings()
+    public static final Block BEETROOT_HEART = register("beetroot_heart", BeetrootHeartBlock::new, AbstractBlock.Settings.create()
+            .sounds(BlockSoundGroup.AMETHYST_BLOCK)
             .ticksRandomly()
             .hardness(4)
             .mapColor(MapColor.PINK)
