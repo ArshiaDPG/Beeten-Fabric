@@ -45,6 +45,7 @@ public class BBlocks {
     public static final Block BEETROOT_TILES = register("beetroot_tiles", PillarBlock::new, beetrootSettings());
     public static final Block BEET_ROOTS = register("beet_roots", HangingRootsBlock::new, AbstractBlock.Settings.copy(Blocks.HANGING_ROOTS));
 
+
     public static final Block BEETROOT_HEART = register("beetroot_heart", BeetrootHeartBlock::new, AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.AMETHYST_BLOCK)
             .ticksRandomly()

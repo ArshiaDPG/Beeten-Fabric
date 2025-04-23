@@ -1,5 +1,7 @@
-package net.digitalpear.beeten.init;
+package net.digitalpear.beeten.init.data;
 
+import net.digitalpear.beeten.init.BBlocks;
+import net.digitalpear.beeten.init.BItems;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -18,6 +20,7 @@ public class BData {
         registry.add(BBlocks.COOKED_BEETROOT_TILES, 5, 5);
         registry.add(BBlocks.BEETROOT_LEAVES, 30, 60);
         registry.add(BBlocks.BEETROOT_SPROUT, 30, 60);
+        registry.add(BBlocks.BEET_ROOTS, 30, 60);
     }
     public static void registerComposting(){
         CompostingChanceRegistry registry = CompostingChanceRegistry.INSTANCE;

@@ -53,7 +53,6 @@ public class BConfiguredFeatures {
     }
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
-
         ConfiguredFeatures.register(featureRegisterable, BIG_BEETROOT, BFeature.BIG_BEETROOT, config(1.0f));
         ConfiguredFeatures.register(featureRegisterable, BIG_BEETROOT_GROWN, BFeature.BIG_BEETROOT, config(0.0f));
     }

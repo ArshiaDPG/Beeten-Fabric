@@ -20,8 +20,11 @@ public class BItems {
     private static Item register(String name, Function<Item.Settings, Item> factory, Item.Settings settings){
         return Items.register(RegistryKey.of(RegistryKeys.ITEM, Beeten.id(name)), factory, settings);
     }
+    private static Item register(String name, Item.Settings settings){
+        return register(name, Item::new, settings);
+    }
 
-    public static final Item HEART_BEET = register("heart_beet", Item::new, new Item.Settings()
+    public static final Item HEART_BEET = register("heart_beet", new Item.Settings()
             .food(BFoodComponents.HEART_BEET, BConsumableComponents.HEART_BEET)
     );
 

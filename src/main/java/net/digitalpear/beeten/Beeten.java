@@ -1,10 +1,10 @@
 package net.digitalpear.beeten;
 
 import net.digitalpear.beeten.init.*;
+import net.digitalpear.beeten.init.data.BData;
 import net.digitalpear.beeten.init.worldgen.BFeature;
 import net.digitalpear.beeten.init.worldgen.BPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
@@ -28,6 +28,7 @@ public class Beeten implements ModInitializer {
         BData.init();
         BConsumeEffects.init();
         BGameRules.init();
+
 
         ServerEntityEvents.ENTITY_LOAD.register((entity, serverWorld) -> {
             if (entity.getType() == EntityType.LIGHTNING_BOLT){
