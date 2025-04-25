@@ -3,6 +3,7 @@ package net.digitalpear.beeten.common.worldgen;
 import com.mojang.serialization.Codec;
 import net.digitalpear.beeten.init.BBlocks;
 import net.digitalpear.beeten.init.BTags;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.property.Properties;
@@ -158,8 +159,9 @@ public class BigBeetrootFeature extends Feature<BigBeetrootFeatureConfig> {
             world.setBlockState(pos,
                     state
                             .withIfExists(Properties.WATERLOGGED, world.isWater(pos))
-                            .withIfExists(Properties.DISTANCE_0_7, 1)
-                    , 3);
+                            .withIfExists(Properties.DISTANCE_0_7, 0)
+                    , Block.NOTIFY_ALL);
+            world.scheduleBlockTick(pos, state.getBlock(), 1);
             return true;
         }
         return false;

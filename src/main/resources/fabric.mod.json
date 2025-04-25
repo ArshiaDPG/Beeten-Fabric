@@ -4,9 +4,10 @@
   "version": "${version}",
 
   "name": "Beeten",
-  "description": "",
+  "description": "More than beets the eye.",
   "authors": [
-    "DigitalPear"
+    "DigitalPear",
+    "Jamie's Jam"
   ],
   "contact": {},
 

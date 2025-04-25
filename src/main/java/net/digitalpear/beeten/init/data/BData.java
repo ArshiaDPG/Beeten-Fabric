@@ -16,8 +16,8 @@ public class BData {
         registry.add(BBlocks.HEART_BEETS, registry.get(Blocks.BEETROOTS).getBurnChance(), registry.get(Blocks.BEETROOTS).getSpreadChance());
         registry.add(BBlocks.BEETROOT_BLOCK, 5, 5);
         registry.add(BBlocks.BEETROOT_TILES, 5, 5);
-        registry.add(BBlocks.COOKED_BEETROOT_BLOCK, 5, 5);
-        registry.add(BBlocks.COOKED_BEETROOT_TILES, 5, 5);
+        registry.add(BBlocks.COOKED_BEETROOT_BLOCK, 5, 10);
+        registry.add(BBlocks.COOKED_BEETROOT_TILES, 5, 10);
         registry.add(BBlocks.BEETROOT_LEAVES, 30, 60);
         registry.add(BBlocks.BEETROOT_SPROUT, 30, 60);
         registry.add(BBlocks.BEET_ROOTS, 30, 60);

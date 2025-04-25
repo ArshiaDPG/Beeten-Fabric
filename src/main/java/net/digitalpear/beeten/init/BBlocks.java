@@ -53,7 +53,10 @@ public class BBlocks {
             .mapColor(MapColor.PINK)
             .luminance(state -> 5)
     );
-    public static final Block HEART_BEETS = registerWithoutItem("heart_beets", HearBeetsBlock::new, AbstractBlock.Settings.copy(Blocks.BEETROOTS));
+    public static final Block HEART_BEETS = registerWithoutItem("heart_beets", HearBeetsBlock::new,
+            AbstractBlock.Settings.copy(Blocks.BEETROOTS)
+                    .mapColor(MapColor.PINK)
+    );
 
 
     public static final Block COOKED_BEETROOT_BLOCK = register("cooked_beetroot_block", PillarBlock::new, cookedBeetrootSettings());
