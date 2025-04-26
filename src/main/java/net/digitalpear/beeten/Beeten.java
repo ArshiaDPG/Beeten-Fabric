@@ -26,7 +26,6 @@ public class Beeten implements ModInitializer {
         BFeature.init();
         BPlacedFeatures.init();
         BData.init();
-        BConsumeEffects.init();
         BGameRules.init();
 
 

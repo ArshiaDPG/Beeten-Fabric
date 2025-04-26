@@ -5,7 +5,6 @@ import net.digitalpear.beeten.init.BItems;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.block.Blocks;
 import net.minecraft.village.TradeOffers;
 
@@ -34,16 +33,8 @@ public class BData {
         registerFlammables();
         registerComposting();
 
-        TradeOfferHelper.registerWanderingTraderOffers(wanderingTraderOffersBuilder -> {
-            wanderingTraderOffersBuilder.addOffersToPool(TradeOfferHelper.WanderingTraderOffersBuilder.SELL_COMMON_ITEMS_POOL,
-                    new TradeOffers.SellItemFactory(
-                            BBlocks.BEETROOT_SPROUT,
-                            3,
-                            1,
-                            5,
-                            4
-                    )
-            );
-        });
+        TradeOfferHelper.registerWanderingTraderOffers(0, factories -> factories.add((entity, random) ->
+                new TradeOffers.SellItemFactory(BBlocks.BEETROOT_SPROUT, 3, 1, 5, 4)
+                        .create(entity, random)));
     }
 }

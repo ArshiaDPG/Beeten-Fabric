@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.floatprovider.ConstantFloatProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -31,7 +32,7 @@ public class BConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> BIG_BEETROOT_GROWN = of("big_beetroot_grown");
 
     private static BigBeetrootFeatureConfig config(float chance){
-        Pool<BlockState> ROOT_POOL = Pool.<BlockState>builder()
+        DataPool<BlockState> ROOT_POOL = DataPool.<BlockState>builder()
                 .add(Blocks.ROOTED_DIRT.getDefaultState(), 5)
                 .add(Blocks.DIRT.getDefaultState(), 3)
                 .add(BBlocks.BEETROOT_BLOCK.getDefaultState(), 1)

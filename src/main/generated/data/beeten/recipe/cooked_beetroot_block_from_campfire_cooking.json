@@ -3,7 +3,9 @@
   "category": "food",
   "cookingtime": 600,
   "experience": 0.5,
-  "ingredient": "beeten:beetroot_block",
+  "ingredient": {
+    "item": "beeten:beetroot_block"
+  },
   "result": {
     "id": "beeten:cooked_beetroot_block"
   }

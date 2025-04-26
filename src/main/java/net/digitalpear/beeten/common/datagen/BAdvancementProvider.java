@@ -8,7 +8,7 @@ import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.data.advancement.AdvancementTabGenerator;
+import net.minecraft.data.server.advancement.AdvancementTabGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.RegistryEntryLookup;
@@ -29,7 +29,6 @@ public class BAdvancementProvider extends FabricAdvancementProvider {
     @Override
     public void generateAdvancement(RegistryWrapper.WrapperLookup wrapperLookup, Consumer<AdvancementEntry> consumer) {
         AdvancementEntry advancementEntry = AdvancementTabGenerator.reference("husbandry/plant_seed");
-        RegistryEntryLookup<Item> registryEntryLookup = wrapperLookup.getOrThrow(RegistryKeys.ITEM);
 
         AdvancementEntry advancementEntry2 = Advancement.Builder.create().parent(advancementEntry)
                 .display(BItems.HEART_BEET,
@@ -37,7 +36,7 @@ public class BAdvancementProvider extends FabricAdvancementProvider {
                         Text.translatable("advancements.story.obtain_heart_beet.description"),
                         null, AdvancementFrame.GOAL, true, true, false)
                 .criterion("get_heart_beet", InventoryChangedCriterion.Conditions.items(ItemPredicate.Builder.create()
-                        .items(registryEntryLookup, BItems.HEART_BEET)
+                        .items(BItems.HEART_BEET)
                 )).build(consumer, Beeten.MOD_ID +":husbandry/obtain_heart_beet");
 
     }

@@ -23,7 +23,7 @@ public class BeetrootSproutBlock extends AzaleaBlock {
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap((registry) ->
-                registry.getOptional(BConfiguredFeatures.BIG_BEETROOT_GROWN)).ifPresent((entry) -> {
+                registry.getEntry(BConfiguredFeatures.BIG_BEETROOT_GROWN)).ifPresent((entry) -> {
             entry.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos);
         });
     }

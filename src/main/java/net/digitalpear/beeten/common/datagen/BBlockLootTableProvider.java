@@ -35,7 +35,7 @@ public class BBlockLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
 
-        RegistryWrapper.Impl<Enchantment> enchantmentImpl = this.registries.getOrThrow(RegistryKeys.ENCHANTMENT);
+        RegistryWrapper.Impl<Enchantment> enchantmentImpl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
 
         addDrop(BBlocks.BEETROOT_BLOCK);
         addDrop(BBlocks.BEETROOT_TILES);
@@ -53,7 +53,7 @@ public class BBlockLootTableProvider extends FabricBlockLootTableProvider {
     }
 
     public LootTable.Builder beetrootLeavesDrops(Block leaves, Block sapling, float... saplingChance) {
-        RegistryWrapper.Impl<Enchantment> impl = this.registries.getOrThrow(RegistryKeys.ENCHANTMENT);
+        RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
         return this.leavesDrops(leaves, sapling, saplingChance).pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0F)).conditionally(this.createWithoutShearsOrSilkTouchCondition()).with((this.addSurvivesExplosionCondition(leaves, ItemEntry.builder(Items.BEETROOT))).conditionally(TableBonusLootCondition.builder(impl.getOrThrow(Enchantments.FORTUNE), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F))));
     }
 }

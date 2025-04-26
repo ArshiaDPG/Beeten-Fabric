@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "B": "beeten:heart_beet",
-    "L": "beeten:beetroot_block"
+    "B": {
+      "item": "beeten:heart_beet"
+    },
+    "L": {
+      "item": "beeten:beetroot_block"
+    }
   },
   "pattern": [
     "BBB",
