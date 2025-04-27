@@ -43,7 +43,7 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         BBlocks.COOKED_BEETROOT_TILES
                 );
 
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(BBlocks.BEETROOT_BLOCK).add(BBlocks.COOKED_BEETROOT_BLOCK).add(BBlocks.BEETROOT_HEART);
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(BBlocks.BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_BLOCK);
         getOrCreateTagBuilder(BlockTags.LEAVES).add(BBlocks.BEETROOT_LEAVES);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
