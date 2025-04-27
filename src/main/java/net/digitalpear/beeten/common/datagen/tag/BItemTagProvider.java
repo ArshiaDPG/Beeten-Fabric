@@ -17,7 +17,6 @@ public class BItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).add(
                 BBlocks.BEETROOT_BLOCK.asItem(),
-                BBlocks.BEETROOT_HEART.asItem(),
                 BBlocks.COOKED_BEETROOT_BLOCK.asItem()
         );
         getOrCreateTagBuilder(ItemTags.LEAVES).add(BBlocks.BEETROOT_LEAVES.asItem());
