@@ -22,7 +22,7 @@ public class BRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter recipeExporter) {
-        offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.FOOD, BItems.HEART_BEET, RecipeCategory.BUILDING_BLOCKS, BBlocks.BEETROOT_BLOCK);
+        offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.FOOD, BItems.HEART_BEET, RecipeCategory.BUILDING_BLOCKS, BBlocks.HEART_BEET_CRATE);
         BBlocks.BEETROOT_COOKING_MAP.forEach((input, output) -> {
             CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(input), RecipeCategory.BUILDING_BLOCKS, output, 0.5f, 200).criterion(hasItem(input), conditionsFromItem(input)).offerTo(recipeExporter, getItemPath(output));
             CookingRecipeJsonBuilder.createCampfireCooking(Ingredient.ofItems(input), RecipeCategory.BUILDING_BLOCKS, output, 0.5f, 600).criterion(hasItem(input), conditionsFromItem(input)).offerTo(recipeExporter, getName(output, "campfire_cooking"));

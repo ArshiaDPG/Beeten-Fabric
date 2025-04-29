@@ -49,12 +49,13 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
                 BBlocks.BEETROOT_HEART,
                 BBlocks.BEETROOT_BLOCK, BBlocks.BEETROOT_TILES,
-                BBlocks.COOKED_BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_TILES
+                BBlocks.COOKED_BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_TILES,
+                BBlocks.HEART_BEET_CRATE
         );
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(BBlocks.BEETROOT_LEAVES);
 
-        getOrCreateTagBuilder(BlockTags.CRYSTAL_SOUND_BLOCKS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS);
-        getOrCreateTagBuilder(BlockTags.VIBRATION_RESONATORS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS);
+        getOrCreateTagBuilder(BlockTags.CRYSTAL_SOUND_BLOCKS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS, BBlocks.HEART_BEET_CRATE);
+        getOrCreateTagBuilder(BlockTags.VIBRATION_RESONATORS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS, BBlocks.HEART_BEET_CRATE);
 
         getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND).add(BBlocks.HEART_BEETS);
     }

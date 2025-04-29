@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_beetroot_block": {
+    "has_heart_beet_crate": {
       "conditions": {
         "items": [
           {
-            "items": "beeten:beetroot_block"
+            "items": "beeten:heart_beet_crate"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_beetroot_block"
+      "has_heart_beet_crate"
     ]
   ],
   "rewards": {
