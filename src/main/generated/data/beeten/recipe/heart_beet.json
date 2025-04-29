@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "beeten:heart_beet_crate"
+  ],
+  "result": {
+    "count": 9,
+    "id": "beeten:heart_beet"
+  }
+}

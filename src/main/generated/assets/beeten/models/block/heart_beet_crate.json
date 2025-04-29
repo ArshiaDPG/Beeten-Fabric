@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "farmersdelight:block/crate_bottom",
+    "side": "beeten:block/heart_beet_crate_side",
+    "top": "beeten:block/heart_beet_crate"
+  }
+}

@@ -3,17 +3,20 @@ package net.digitalpear.beeten.common.datagen;
 import net.digitalpear.beeten.Beeten;
 import net.digitalpear.beeten.init.BBlocks;
 import net.digitalpear.beeten.init.BItems;
+import net.digitalpear.beeten.init.data.ModCompat;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.data.*;
 import net.minecraft.client.render.model.json.WeightedVariant;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
 public class BModelProvider extends FabricModelProvider {
-    public static final Model TEMPLATE_BEETROOT_SPROUT = block("template_beetroot_sprout", TextureKey.TOP, TextureKey.SIDE);
+    public static final Model TEMPLATE_BEETROOT_SPROUT = block("template_beetroot_sprout", TextureKey.TOP, TextureKey.SIDE, TextureKey.PLANT);
     private static Model block(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(Beeten.id("block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
@@ -35,9 +38,15 @@ public class BModelProvider extends FabricModelProvider {
 
         registerBeetrootSprout(blockStateModelGenerator, BBlocks.BEETROOT_SPROUT);
         blockStateModelGenerator.registerSimpleCubeAll(BBlocks.BEETROOT_LEAVES);
+
+        registerCrate(blockStateModelGenerator, BBlocks.HEART_BEET_CRATE);
+    }
+    public final void registerCrate(BlockStateModelGenerator blockStateModelGenerator, Block block) {
+        TextureMap textureMap = new TextureMap().put(TextureKey.BOTTOM, Identifier.of(ModCompat.FD_ID, "block/crate_bottom")).put(TextureKey.TOP, TextureMap.getId(block)).put(TextureKey.SIDE, TextureMap.getSubId(block, "_side"));
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, BlockStateModelGenerator.createWeightedVariant(Models.CUBE_BOTTOM_TOP.upload(block, textureMap, blockStateModelGenerator.modelCollector))));
     }
     public final void registerBeetrootSprout(BlockStateModelGenerator blockStateModelGenerator, Block block) {
-        WeightedVariant weightedVariant = BlockStateModelGenerator.createWeightedVariant(TEMPLATE_BEETROOT_SPROUT.upload(block, TextureMap.sideAndTop(block), blockStateModelGenerator.modelCollector));
+        WeightedVariant weightedVariant = BlockStateModelGenerator.createWeightedVariant(TEMPLATE_BEETROOT_SPROUT.upload(block, TextureMap.sideAndTop(block).put(TextureKey.PLANT, TextureMap.getSubId(block, "_plant")), blockStateModelGenerator.modelCollector));
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, weightedVariant));
     }
 

@@ -1,8 +1,8 @@
 {
     "parent": "block/block",
     "textures": {
-        "particle": "beeten:block/beetroot_sprout_plant",
-        "plant": "beeten:block/beetroot_sprout_plant"
+        "particle": "#plant",
+        "plant": "#plant"
     },
     "elements": [
         {   "from": [ 0, 16, 0 ],

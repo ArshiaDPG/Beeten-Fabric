@@ -27,7 +27,7 @@ public class BRecipeProvider extends FabricRecipeProvider {
         return new RecipeGenerator(wrapperLookup, recipeExporter) {
             @Override
             public void generate() {
-                offerCompactingRecipe(RecipeCategory.BUILDING_BLOCKS, BBlocks.BEETROOT_BLOCK, Items.BEETROOT, hasItem(Items.BEETROOT));
+                offerReversibleCompactingRecipes(RecipeCategory.FOOD, BItems.HEART_BEET, RecipeCategory.BUILDING_BLOCKS, BBlocks.HEART_BEET_CRATE);
 
                 BBlocks.BEETROOT_COOKING_MAP.forEach((input, output) -> {
                     CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(input), RecipeCategory.BUILDING_BLOCKS, output, 0.5f, 200).criterion(hasItem(input), conditionsFromItem(input)).offerTo(exporter, getItemPath(output));

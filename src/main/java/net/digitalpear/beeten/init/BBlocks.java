@@ -1,17 +1,17 @@
 package net.digitalpear.beeten.init;
 
 import net.digitalpear.beeten.Beeten;
-import net.digitalpear.beeten.common.block.BeetrootLeavesBlock;
-import net.digitalpear.beeten.common.block.BeetrootSproutBlock;
-import net.digitalpear.beeten.common.block.HearBeetsBlock;
-import net.digitalpear.beeten.common.block.BeetrootHeartBlock;
+import net.digitalpear.beeten.common.block.*;
+import net.digitalpear.beeten.init.data.ModCompat;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -68,6 +68,10 @@ public class BBlocks {
             );
     public static final Block BEETROOT_SPROUT = register("beetroot_sprout", BeetrootSproutBlock::new, AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.EMERALD_GREEN));
 
+    public static final Block HEART_BEET_CRATE = register("heart_beet_crate", settings -> new CompatBlock(ModCompat.FD_ID, settings),  AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD)
+            .luminance(stata -> 5)
+    );
+
     public static void init() {
         BEETROOT_COOKING_MAP.put(BEETROOT_BLOCK, COOKED_BEETROOT_BLOCK);
         BEETROOT_COOKING_MAP.put(BEETROOT_TILES, COOKED_BEETROOT_TILES);
@@ -85,5 +89,11 @@ public class BBlocks {
                     COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES
             );
         });
+
+        if (ModCompat.isFDLoaded()){
+            ItemGroupEvents.modifyEntriesEvent(ModCompat.farmersDelightItemGroup()).register(fabricItemGroupEntries -> {
+                fabricItemGroupEntries.addAfter(Registries.BLOCK.get(Identifier.of(ModCompat.FD_ID, "beetroot_crate")), HEART_BEET_CRATE);
+            });
+        }
     }
 }
