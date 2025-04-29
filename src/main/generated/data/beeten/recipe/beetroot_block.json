@@ -1,34 +1,15 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "building",
-  "ingredients": [
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
-    },
-    {
-      "item": "minecraft:beetroot"
+  "key": {
+    "#": {
+      "item": "beeten:heart_beet"
     }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
   ],
   "result": {
     "count": 1,

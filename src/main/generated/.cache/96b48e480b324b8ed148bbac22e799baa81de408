@@ -1,9 +1,10 @@
-// 1.21	2025-04-26T17:03:50.4254993	Beeten/Block Loot Tables
+// 1.21	2025-04-29T12:54:09.0849389	Beeten/Block Loot Tables
 5e64939a065b6a9649c5ed6e90e89626588c8efa data\beeten\loot_table\blocks\beet_roots.json
 e1eda5717c6a97d5624fae1c9161973fc7921057 data\beeten\loot_table\blocks\beetroot_block.json
 60648e3e91bba15764b07839e1332995ec195e23 data\beeten\loot_table\blocks\beetroot_heart.json
 9b9d0c2730bd0794af452b171448aa615827b33e data\beeten\loot_table\blocks\cooked_beetroot_block.json
 3b739f83bd5d87df83fd29cfaedf55a1d6c2bd0b data\beeten\loot_table\blocks\heart_beets.json
+f54064672a5057aef2978cec4a2d36f97a78733b data\beeten\loot_table\blocks\heart_beet_crate.json
 3dc1e0a37b0dd304766a40f3946c51d16a933411 data\beeten\loot_table\blocks\cooked_beetroot_tiles.json
 e2f1defe7453d8b3d5602c12402cfc2db6fba0ad data\beeten\loot_table\blocks\beetroot_leaves.json
 49e3c0966d1416af256503f91e9f67ffc9771853 data\beeten\loot_table\blocks\beetroot_sprout.json

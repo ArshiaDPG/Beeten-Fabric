@@ -47,6 +47,8 @@ public class BBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(BBlocks.BEETROOT_SPROUT);
         addDrop(BBlocks.BEET_ROOTS);
 
+        addDrop(BBlocks.HEART_BEET_CRATE);
+
         LootCondition.Builder builder = BlockStatePropertyLootCondition.builder(BBlocks.HEART_BEETS).properties(StatePredicate.Builder.create().exactMatch(BeetrootsBlock.AGE, 3));
         addDrop(BBlocks.BEETROOT_HEART, (block) -> dropsWithSilkTouch(block, applyExplosionDecay(block, ItemEntry.builder(BItems.HEART_BEET).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 3.0F))).apply(ApplyBonusLootFunction.uniformBonusCount(enchantmentImpl.getOrThrow(Enchantments.FORTUNE))).apply(LimitCountLootFunction.builder(BoundedIntUnaryOperator.createMax(9))))));
         addDrop(BBlocks.HEART_BEETS, cropDrops(BBlocks.HEART_BEETS, BItems.HEART_BEET, Items.BEETROOT_SEEDS, builder));

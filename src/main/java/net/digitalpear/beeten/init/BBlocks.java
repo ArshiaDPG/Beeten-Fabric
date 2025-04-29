@@ -2,8 +2,10 @@ package net.digitalpear.beeten.init;
 
 import net.digitalpear.beeten.Beeten;
 import net.digitalpear.beeten.common.block.BeetrootSproutBlock;
+import net.digitalpear.beeten.common.block.CompatBlock;
 import net.digitalpear.beeten.common.block.HearBeetsBlock;
 import net.digitalpear.beeten.common.block.BeetrootHeartBlock;
+import net.digitalpear.beeten.init.data.ModCompat;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -15,6 +17,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,17 +56,17 @@ public class BBlocks {
     public static final Block BEET_ROOTS = register("beet_roots", new HangingRootsBlock(AbstractBlock.Settings.copy(Blocks.HANGING_ROOTS)));
 
 
-    public static final Block BEETROOT_HEART = register("beetroot_heart", new BeetrootHeartBlock(AbstractBlock.Settings.create()
+
+    public static final Block HEART_BEETS = registerWithoutItem("heart_beets", new HearBeetsBlock(AbstractBlock.Settings.copy(Blocks.BEETROOTS)
+            .mapColor(MapColor.PINK))
+    );
+    public static final Block BEETROOT_HEART = register("beetroot_heart", new BeetrootHeartBlock(BBlocks.HEART_BEETS.getDefaultState(), AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.AMETHYST_BLOCK)
             .ticksRandomly()
             .hardness(4)
             .mapColor(MapColor.PINK)
             .luminance(state -> 5))
     );
-    public static final Block HEART_BEETS = registerWithoutItem("heart_beets", new HearBeetsBlock(AbstractBlock.Settings.copy(Blocks.BEETROOTS)
-            .mapColor(MapColor.PINK))
-    );
-
 
     public static final Block COOKED_BEETROOT_BLOCK = register("cooked_beetroot_block", new PillarBlock(cookedBeetrootSettings()));
     public static final Block COOKED_BEETROOT_TILES = register("cooked_beetroot_tiles", new PillarBlock(cookedBeetrootSettings()));
@@ -71,6 +74,8 @@ public class BBlocks {
 
     public static final Block BEETROOT_LEAVES = register("beetroot_leaves", new LeavesBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES)));
     public static final Block BEETROOT_SPROUT = register("beetroot_sprout", new BeetrootSproutBlock(AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.EMERALD_GREEN)));
+
+    public static final Block HEART_BEET_CRATE = register("heart_beet_crate", new CompatBlock(ModCompat.FD_ID, AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).strength(2, 3).luminance(s -> 5).sounds(BlockSoundGroup.WOOD)));
 
     public static void init() {
         BEETROOT_COOKING_MAP.put(BEETROOT_BLOCK, COOKED_BEETROOT_BLOCK);
@@ -88,5 +93,11 @@ public class BBlocks {
                     COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES
             );
         });
+
+        if (ModCompat.isFDLoaded()){
+            ItemGroupEvents.modifyEntriesEvent(ModCompat.farmersDelightItemGroup()).register(fabricItemGroupEntries -> {
+                fabricItemGroupEntries.addAfter(Registries.BLOCK.get(Identifier.of(ModCompat.FD_ID, "beetroot_crate")), HEART_BEET_CRATE);
+            });
+        }
     }
 }

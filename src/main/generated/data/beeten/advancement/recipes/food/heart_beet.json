@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_heart_beet": {
+    "has_beetroot_block": {
       "conditions": {
         "items": [
           {
-            "items": "beeten:heart_beet"
+            "items": "beeten:beetroot_block"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:beetroot_block"
+        "recipe": "minecraft:heart_beet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_heart_beet"
+      "has_beetroot_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:beetroot_block"
+      "minecraft:heart_beet"
     ]
   }
 }

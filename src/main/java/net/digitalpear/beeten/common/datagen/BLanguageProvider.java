@@ -31,6 +31,8 @@ public class BLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(BBlocks.BEET_ROOTS, "Beet Roots");
 
+        translationBuilder.add(BBlocks.HEART_BEET_CRATE, "Heart Beet Crate");
+
         translationBuilder.add(BGameRules.MAX_HEART_BEAT_CONSUMPTION.getTranslationKey(), "Max health boost from Heart Beets");
         translationBuilder.add(BGameRules.MAX_HEART_BEAT_CONSUMPTION.getTranslationKey() + ".description", "The max amount of health that an entity can get from eating heart beets.");
 

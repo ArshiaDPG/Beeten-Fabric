@@ -13,8 +13,11 @@ public class BeetrootHeartBlock extends PillarBlock {
     public static final int MAX_ATTEMPTS = 3;
     public static final int H_RANGE = 6;
     public static final int V_RANGE = 1;
-    public BeetrootHeartBlock(Settings settings) {
+    private final BlockState convertingState;
+
+    public BeetrootHeartBlock(BlockState convertingState, Settings settings) {
         super(settings);
+        this.convertingState = convertingState;
     }
 
     @Override
@@ -26,8 +29,8 @@ public class BeetrootHeartBlock extends PillarBlock {
                 int z = random.nextBetween(-getHorizontalRange(), getHorizontalRange());
                 BlockPos currentPos = pos.add(x, y, z);
                 BlockState chosenState = world.getBlockState(currentPos);
-                if (chosenState.isIn(BTags.Blocks.CAN_CONVERT_T0_HEART_BEETROOTS) && BBlocks.HEART_BEETS.getDefaultState().canPlaceAt(world, currentPos)){
-                    BlockState placedState = BBlocks.HEART_BEETS.getDefaultState();
+                if (chosenState.isIn(BTags.Blocks.CAN_CONVERT_T0_HEART_BEETROOTS) && convertingState.canPlaceAt(world, currentPos)){
+                    BlockState placedState = convertingState;
                     if (chosenState.contains(HearBeetsBlock.AGE)){
                         placedState.with(HearBeetsBlock.AGE, chosenState.get(HearBeetsBlock.AGE));
                     }

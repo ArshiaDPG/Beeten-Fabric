@@ -55,5 +55,7 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.CRYSTAL_SOUND_BLOCKS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS);
         getOrCreateTagBuilder(BlockTags.VIBRATION_RESONATORS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS);
+
+        getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND).add(BBlocks.HEART_BEETS);
     }
 }

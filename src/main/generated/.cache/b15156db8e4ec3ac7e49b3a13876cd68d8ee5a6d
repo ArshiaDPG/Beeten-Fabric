@@ -1,9 +1,8 @@
-// 1.21	2025-04-26T17:03:50.411503	Beeten/Model Definitions
+// 1.21	2025-04-29T12:54:09.0579458	Beeten/Model Definitions
 bdcd12e6b92d3327e43480bd600e9e1110284414 assets\beeten\models\item\beet_roots.json
 b0bff313a81bd131fe1a9ecdcb46ec417967c0b7 assets\beeten\models\block\heart_beets_stage2.json
 190c05364e0e97948329fccc21950f0cd8206f8f assets\beeten\blockstates\beetroot_block.json
 786b66f6b5c4c6208304ace2a8c74fbc82c68c03 assets\beeten\models\item\heart_beet.json
-f1c8c83599fe5628b2c5c7eed001001ad1e74e71 assets\minecraft\models\item\air.json
 c73b5bb75c0eff3a0837304eaf1dfa39b656733f assets\beeten\blockstates\beetroot_heart.json
 9b5520654d4f8bf9a3186e9e43fa7768a427e5f8 assets\beeten\blockstates\cooked_beetroot_tiles.json
 a11d75cf24c23fe1c27b74d5b5a247f16494f0f9 assets\beeten\models\block\beetroot_block.json
@@ -11,16 +10,19 @@ a11d75cf24c23fe1c27b74d5b5a247f16494f0f9 assets\beeten\models\block\beetroot_blo
 d3bc45d6878963b72b4a6fb038fd23e8a448e82d assets\beeten\models\item\cooked_beetroot_block.json
 86ec455a0debfd9883d33b99b8c5f508c4c2508d assets\beeten\models\item\beetroot_heart.json
 1fcb527c11de922ec2fd9ffc1cd87d08e76ba45a assets\beeten\models\item\cooked_beetroot_tiles.json
-c3038e20a4b101908d99352b98d4c9525ffd0000 assets\beeten\models\block\beetroot_sprout.json
+f14fd06e4caa324e3e976951ba726b9e11957b14 assets\beeten\models\block\beetroot_sprout.json
 16a3f230cb5347666af663e4e778c710b9e55381 assets\beeten\models\item\beetroot_block.json
 14e51f767210c779a5d1f410828ddd65ce3a201b assets\beeten\blockstates\beetroot_sprout.json
 87214c647ca4836195aa6e3ff2770d11c9c02cae assets\beeten\models\item\beetroot_leaves.json
 4c17836841463095a78aa9d4d80e0c06f3c44391 assets\beeten\models\block\beetroot_tiles.json
+ebab15fd1c94f61b2a25069581dd7fcc5ff2e355 assets\beeten\blockstates\heart_beet_crate.json
 c8e93dd549ed24a459bea0f1251359877740097d assets\beeten\models\block\cooked_beetroot_block.json
 62f45bcbc5aa130bd687b306e9e6f721fc54365a assets\beeten\models\block\beet_roots.json
 c6bcd014a98e9dda853ddf3d4872c52f055b16fc assets\beeten\models\item\beetroot_tiles.json
 ccdfbad5e850dbcfe683dd6d040fdaa185359081 assets\beeten\models\item\beetroot_sprout.json
 e632c43057c00c9fc227a998be8e15946b06c985 assets\beeten\blockstates\beet_roots.json
+cfd37bc6a7dce191e08b9c1cc2d7ea2ab6fbc26b assets\beeten\models\item\heart_beet_crate.json
+e371dd85f3d96cd5049be14310db50e49d8183c6 assets\beeten\models\block\heart_beet_crate.json
 72aefc2c893a3a2a9cf03fc8d417f0aebeee2bd8 assets\beeten\blockstates\heart_beets.json
 4b5294e9ef38528f7c19d19cb33d8a0135a760be assets\beeten\blockstates\beetroot_leaves.json
 6e85e02c3b164cf5bbff81087df2da8ee21be93d assets\beeten\models\block\beetroot_heart.json
