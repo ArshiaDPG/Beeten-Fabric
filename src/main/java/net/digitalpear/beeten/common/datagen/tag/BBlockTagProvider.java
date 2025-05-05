@@ -2,6 +2,7 @@ package net.digitalpear.beeten.common.datagen.tag;
 
 import net.digitalpear.beeten.init.BBlocks;
 import net.digitalpear.beeten.init.BTags;
+import net.digitalpear.beeten.init.data.ModCompat;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
@@ -23,7 +24,8 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BTags.Blocks.CAN_CONVERT_T0_HEART_BEETROOTS)
                 .add(Blocks.BEETROOTS)
-                .addOptional(Identifier.of("farmersdelight", "wild_beetroots"))
+                .addOptional(Identifier.of(ModCompat.FD_ID, "wild_beetroots"))
+                .addOptional(Identifier.of("bountifulfares", "wild_beetroots"))
         ;
 
         getOrCreateTagBuilder(BTags.Blocks.HEART_BEETS_PLACEABLE_ON)

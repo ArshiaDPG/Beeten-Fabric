@@ -1,12 +1,10 @@
 package net.digitalpear.beeten.init;
 
 import net.digitalpear.beeten.Beeten;
-import net.digitalpear.beeten.common.block.BeetrootSproutBlock;
-import net.digitalpear.beeten.common.block.CompatBlock;
-import net.digitalpear.beeten.common.block.HearBeetsBlock;
-import net.digitalpear.beeten.common.block.BeetrootHeartBlock;
+import net.digitalpear.beeten.common.block.*;
 import net.digitalpear.beeten.init.data.ModCompat;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
