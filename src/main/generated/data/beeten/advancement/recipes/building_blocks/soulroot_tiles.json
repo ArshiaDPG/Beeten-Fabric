@@ -3,17 +3,17 @@
     {
       "condition": "fabric:all_mods_loaded",
       "values": [
-        "farmersdelight"
+        "soulfulNether"
       ]
     }
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_heart_beet_crate": {
+    "has_soulroot_block": {
       "conditions": {
         "items": [
           {
-            "items": "beeten:heart_beet_crate"
+            "items": "beeten:soulroot_block"
           }
         ]
       },
@@ -21,7 +21,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:heart_beet"
+        "recipe": "beeten:soulroot_tiles"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,12 +29,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_heart_beet_crate"
+      "has_soulroot_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:heart_beet"
+      "beeten:soulroot_tiles"
     ]
   }
 }

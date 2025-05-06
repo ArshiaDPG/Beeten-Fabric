@@ -1,5 +1,7 @@
 package net.digitalpear.beeten.common.datagen;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.digitalpear.beeten.Beeten;
 import net.digitalpear.beeten.init.BBlocks;
 import net.digitalpear.beeten.init.BItems;
@@ -11,6 +13,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.data.*;
 import net.minecraft.client.render.model.json.WeightedVariant;
 import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
@@ -34,12 +37,28 @@ public class BModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createLogTexturePool(BBlocks.COOKED_BEETROOT_TILES).stem(BBlocks.COOKED_BEETROOT_TILES);
 
         blockStateModelGenerator.registerTintableCross(BBlocks.BEET_ROOTS, BlockStateModelGenerator.CrossType.NOT_TINTED);
-        blockStateModelGenerator.registerCrop(BBlocks.HEART_BEETS, Properties.AGE_3, 0, 1, 2, 3);
+        registerCrop(blockStateModelGenerator, BBlocks.HEART_BEETS, Properties.AGE_3, 0, 1, 2, 3);
 
         registerBeetrootSprout(blockStateModelGenerator, BBlocks.BEETROOT_SPROUT);
         blockStateModelGenerator.registerSimpleCubeAll(BBlocks.BEETROOT_LEAVES);
 
         registerCrate(blockStateModelGenerator, BBlocks.HEART_BEET_CRATE);
+
+        blockStateModelGenerator.createLogTexturePool(BBlocks.SOULROOT_BLOCK).stem(BBlocks.SOULROOT_BLOCK);
+        blockStateModelGenerator.createLogTexturePool(BBlocks.SOULROOT_TILES).stem(BBlocks.SOULROOT_TILES);
+        blockStateModelGenerator.registerSimpleCubeAll(BBlocks.SOULROOT_LEAVES);
+
+    }
+    public final void registerCrop(BlockStateModelGenerator blockStateModelGenerator, Block crop, Property<Integer> ageProperty, int... ageTextureIndices) {
+        if (ageProperty.getValues().size() != ageTextureIndices.length) {
+            throw new IllegalArgumentException();
+        } else {
+            Int2ObjectMap<Identifier> int2ObjectMap = new Int2ObjectOpenHashMap<>();
+            blockStateModelGenerator.blockStateCollector.accept(VariantsBlockModelDefinitionCreator.of(crop).with(BlockStateVariantMap.models(ageProperty).generate((age) -> {
+                int i = ageTextureIndices[age];
+                return BlockStateModelGenerator.createWeightedVariant(int2ObjectMap.computeIfAbsent(i, (stage) -> blockStateModelGenerator.createSubModel(crop, "_stage" + stage, Models.CROP, TextureMap::crop)));
+            })));
+        }
     }
     public final void registerCrate(BlockStateModelGenerator blockStateModelGenerator, Block block) {
         TextureMap textureMap = new TextureMap().put(TextureKey.BOTTOM, Identifier.of(ModCompat.FD_ID, "block/crate_bottom")).put(TextureKey.TOP, TextureMap.getId(block)).put(TextureKey.SIDE, TextureMap.getSubId(block, "_side"));

@@ -2,6 +2,7 @@ package net.digitalpear.beeten.common.datagen.tag;
 
 import net.digitalpear.beeten.init.BBlocks;
 import net.digitalpear.beeten.init.BTags;
+import net.digitalpear.beeten.init.data.ModCompat;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Blocks;
@@ -23,18 +24,18 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BTags.Blocks.CAN_CONVERT_T0_HEART_BEETROOTS)
                 .add(Blocks.BEETROOTS)
-                .addOptional(Identifier.of("farmersdelight", "wild_beetroots"))
+                .addOptional(Identifier.of(ModCompat.FD_ID, "wild_beetroots"))
+                .addOptional(Identifier.of("bountifulfares", "wild_beetroots"))
         ;
 
         getOrCreateTagBuilder(BTags.Blocks.HEART_BEETS_PLACEABLE_ON)
-                .forceAddTag(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON)
-        ;
-
-        getOrCreateTagBuilder(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON)
                 .forceAddTag(BlockTags.DIRT)
                 .forceAddTag(BlockTags.SAND)
                 .add(Blocks.FARMLAND)
-                .add(Blocks.CLAY)
+                .add(Blocks.CLAY);
+
+        getOrCreateTagBuilder(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON)
+                .forceAddTag(BTags.Blocks.HEART_BEETS_PLACEABLE_ON)
                 .add(
                         BBlocks.BEETROOT_HEART,
                         BBlocks.BEETROOT_BLOCK,
@@ -43,17 +44,20 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         BBlocks.COOKED_BEETROOT_TILES
                 );
 
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(BBlocks.BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_BLOCK);
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(BBlocks.BEETROOT_BLOCK).add(BBlocks.COOKED_BEETROOT_BLOCK);
         getOrCreateTagBuilder(BlockTags.LEAVES).add(BBlocks.BEETROOT_LEAVES);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
                 BBlocks.BEETROOT_HEART,
                 BBlocks.BEETROOT_BLOCK, BBlocks.BEETROOT_TILES,
-                BBlocks.COOKED_BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_TILES
+                BBlocks.COOKED_BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_TILES,
+                BBlocks.HEART_BEET_CRATE
         );
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(BBlocks.BEETROOT_LEAVES);
 
-        getOrCreateTagBuilder(BlockTags.CRYSTAL_SOUND_BLOCKS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS);
-        getOrCreateTagBuilder(BlockTags.VIBRATION_RESONATORS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS);
+        getOrCreateTagBuilder(BlockTags.CRYSTAL_SOUND_BLOCKS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS, BBlocks.HEART_BEET_CRATE);
+        getOrCreateTagBuilder(BlockTags.VIBRATION_RESONATORS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS, BBlocks.HEART_BEET_CRATE);
+
+        getOrCreateTagBuilder(BlockTags.MAINTAINS_FARMLAND).add(BBlocks.HEART_BEETS);
     }
 }

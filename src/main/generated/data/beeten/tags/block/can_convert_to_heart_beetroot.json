@@ -4,6 +4,10 @@
     {
       "id": "farmersdelight:wild_beetroots",
       "required": false
+    },
+    {
+      "id": "bountifulfares:wild_beetroots",
+      "required": false
     }
   ]
 }

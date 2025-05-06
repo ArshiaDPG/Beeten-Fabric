@@ -1,6 +1,9 @@
 package net.digitalpear.beeten;
 
 import net.digitalpear.beeten.common.datagen.*;
+import net.digitalpear.beeten.common.datagen.recipes.BFDRecipeProvider;
+import net.digitalpear.beeten.common.datagen.recipes.BRecipeProvider;
+import net.digitalpear.beeten.common.datagen.recipes.BSNRecipeProvider;
 import net.digitalpear.beeten.common.datagen.tag.BBiomeTagProvider;
 import net.digitalpear.beeten.common.datagen.tag.BBlockTagProvider;
 import net.digitalpear.beeten.common.datagen.tag.BItemTagProvider;
@@ -28,10 +31,11 @@ public class BeetenDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(BLanguageProvider::new);
 
         pack.addProvider(BBlockLootTableProvider::new);
-        pack.addProvider(BRecipeProvider::new);
-
         pack.addProvider(BAdvancementProvider::new);
 
+        pack.addProvider(BRecipeProvider::new);
+        pack.addProvider(BSNRecipeProvider::new);
+        pack.addProvider(BFDRecipeProvider::new);
     }
 
     @Override

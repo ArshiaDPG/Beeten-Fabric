@@ -1,4 +1,4 @@
-// 1.21.5	-999999999-01-01T00:00:00	Beeten/recipe
+// 1.21.5	-999999999-01-01T00:00:00	Beeten/Recipes
 22c32677e16a56328ff4d9e8535f9d9ad97f800a data/beeten/advancement/recipes/building_blocks/beetroot_tiles.json
 9857bcf5e4cfe756b14e4d7b8852323bb2bc2552 data/beeten/advancement/recipes/building_blocks/cooked_beetroot_block.json
 716aa85f5ca98bdd03333464d2482e4b93b73c24 data/beeten/advancement/recipes/building_blocks/cooked_beetroot_block_from_campfire_cooking.json
@@ -6,8 +6,6 @@ fe15cb07fed5eb61c9885467756965a46d56de4d data/beeten/advancement/recipes/buildin
 6885384a7134098f50d2956c3740f50a5c1836c9 data/beeten/advancement/recipes/building_blocks/cooked_beetroot_tiles.json
 0ca06a03ef62fa46c208d4389128e07bc114446a data/beeten/advancement/recipes/building_blocks/cooked_beetroot_tiles_from_campfire_cooking.json
 af9e8ad1ca536233a7b2f5707ccb926fe0313b1f data/beeten/advancement/recipes/building_blocks/cooked_beetroot_tiles_from_smoking.json
-e840c99060eeb3d60be1e67c31b08a8825ee8174 data/beeten/advancement/recipes/building_blocks/heart_beet_crate.json
-8bf7660d17e396d69c5e67074f8f337f35ca26b7 data/beeten/advancement/recipes/food/heart_beet.json
 57baff8bfddce1ca40378a600986a563d5160266 data/beeten/advancement/recipes/misc/beetroot_heart.json
 3f95780f95414a8ead92cb305d4c764eec4edd85 data/beeten/recipe/beetroot_heart.json
 02dba9346e7881de2afa8033c55f34f70949ab6a data/beeten/recipe/beetroot_tiles.json
@@ -17,5 +15,3 @@ e840c99060eeb3d60be1e67c31b08a8825ee8174 data/beeten/advancement/recipes/buildin
 5242c601df22c713c0dc7041b03e9820b6215df1 data/beeten/recipe/cooked_beetroot_tiles.json
 fed308b905dee08f87e35f026ff8b6c32480adb5 data/beeten/recipe/cooked_beetroot_tiles_from_campfire_cooking.json
 f41c1a61baa64a54c792095cd5773f05c2e9f18e data/beeten/recipe/cooked_beetroot_tiles_from_smoking.json
-8e8ff0df097f6434b9b6daa4f91480851f366cdd data/beeten/recipe/heart_beet.json
-c90fca64701bd21bf35ec65e335beb8c94a69a30 data/beeten/recipe/heart_beet_crate.json

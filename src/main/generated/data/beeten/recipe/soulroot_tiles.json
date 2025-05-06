@@ -3,22 +3,21 @@
     {
       "condition": "fabric:all_mods_loaded",
       "values": [
-        "farmersdelight"
+        "soulfulNether"
       ]
     }
   ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "beeten:heart_beet"
+    "#": "beeten:soulroot_block"
   },
   "pattern": [
-    "###",
-    "###",
-    "###"
+    "##",
+    "##"
   ],
   "result": {
-    "count": 1,
-    "id": "beeten:heart_beet_crate"
+    "count": 4,
+    "id": "beeten:soulroot_tiles"
   }
 }

@@ -36,5 +36,9 @@ public class BLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add("advancements.story.obtain_heart_beet.title", "Good for the Heart");
         translationBuilder.add("advancements.story.obtain_heart_beet.description", "Obtain a Heart Beet by converting beetroot using a Heart of Beetroot.");
+
+        translationBuilder.add(BBlocks.SOULROOT_BLOCK, "Soulroot Block");
+        translationBuilder.add(BBlocks.SOULROOT_TILES, "Soulroot Tiles");
+        translationBuilder.add(BBlocks.SOULROOT_LEAVES, "Soulroot Leaves");
     }
 }

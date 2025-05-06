@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "beeten:block/soulroot_tiles_top",
+    "side": "beeten:block/soulroot_tiles"
+  }
+}

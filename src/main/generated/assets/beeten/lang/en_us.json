@@ -10,6 +10,9 @@
   "block.beeten.cooked_beetroot_block": "Cooked Beetroot",
   "block.beeten.cooked_beetroot_tiles": "Cooked Beetroot Tiles",
   "block.beeten.heart_beets": "Heart Beets",
+  "block.beeten.soulroot_block": "Soulroot Block",
+  "block.beeten.soulroot_leaves": "Soulroot Leaves",
+  "block.beeten.soulroot_tiles": "Soulroot Tiles",
   "gamerule.maxBeetHealthBoost": "Max health boost from Heart Beets",
   "gamerule.maxBeetHealthBoost.description": "The max amount of health that an entity can get from eating heart beets.",
   "item.beeten.heart_beet": "Heart Beet"
