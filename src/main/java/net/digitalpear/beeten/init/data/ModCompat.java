@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 public class ModCompat {
 
     public static final String FD_ID =  "farmersdelight";
+    public static final String SN_ID =  "soulfulNether";
     public static boolean isFDLoaded(){
         return FabricLoader.getInstance().isModLoaded(FD_ID);
     }

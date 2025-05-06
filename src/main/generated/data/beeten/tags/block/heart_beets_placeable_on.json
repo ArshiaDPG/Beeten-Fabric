@@ -1,5 +1,8 @@
 {
   "values": [
-    "#beeten:beetroot_sprout_placeable_on"
+    "#minecraft:dirt",
+    "#minecraft:sand",
+    "minecraft:farmland",
+    "minecraft:clay"
   ]
 }

@@ -29,14 +29,13 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         ;
 
         getOrCreateTagBuilder(BTags.Blocks.HEART_BEETS_PLACEABLE_ON)
-                .forceAddTag(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON)
-        ;
-
-        getOrCreateTagBuilder(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON)
                 .forceAddTag(BlockTags.DIRT)
                 .forceAddTag(BlockTags.SAND)
                 .add(Blocks.FARMLAND)
-                .add(Blocks.CLAY)
+                .add(Blocks.CLAY);
+
+        getOrCreateTagBuilder(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON)
+                .forceAddTag(BTags.Blocks.HEART_BEETS_PLACEABLE_ON)
                 .add(
                         BBlocks.BEETROOT_HEART,
                         BBlocks.BEETROOT_BLOCK,

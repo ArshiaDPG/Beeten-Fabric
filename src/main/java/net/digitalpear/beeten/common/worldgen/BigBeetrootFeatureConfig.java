@@ -27,5 +27,4 @@ public record BigBeetrootFeatureConfig(BlockStateProvider baseBlock, BlockStateP
             IntProvider.NON_NEGATIVE_CODEC.fieldOf("leaf_height").forGetter(BigBeetrootFeatureConfig::leafHeight),
             FloatProvider.createValidatedCodec(0.0F, 1.0F).fieldOf("heart_chance").forGetter(BigBeetrootFeatureConfig::heartChance)
     ).apply(instance, BigBeetrootFeatureConfig::new));
-
 }

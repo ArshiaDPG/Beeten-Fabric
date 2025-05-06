@@ -4,7 +4,6 @@ import net.digitalpear.beeten.Beeten;
 import net.digitalpear.beeten.common.item.HeartBeetItem;
 import net.digitalpear.beeten.init.data.BFoodComponents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;

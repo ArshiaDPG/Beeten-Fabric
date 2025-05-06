@@ -2,9 +2,11 @@ package net.digitalpear.beeten.init;
 
 import net.digitalpear.beeten.Beeten;
 import net.digitalpear.beeten.common.block.*;
+import net.digitalpear.beeten.common.block.compat.CompatBlock;
+import net.digitalpear.beeten.common.block.compat.CompatLeavesBlock;
+import net.digitalpear.beeten.common.block.compat.CompatPillarBlock;
 import net.digitalpear.beeten.init.data.ModCompat;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -12,14 +14,12 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 public class BBlocks {
 
@@ -48,6 +48,9 @@ public class BBlocks {
     private static AbstractBlock.Settings cookedBeetrootSettings(){
         return beetrootSettings().mapColor(MapColor.DARK_CRIMSON);
     }
+    private static AbstractBlock.Settings soulrootSettings(){
+        return beetrootSettings().mapColor(MapColor.WHITE_GRAY);
+    }
 
     public static final Block BEETROOT_BLOCK = register("beetroot_block", new PillarBlock(beetrootSettings()));
     public static final Block BEETROOT_TILES = register("beetroot_tiles", new PillarBlock(beetrootSettings()));
@@ -73,7 +76,15 @@ public class BBlocks {
     public static final Block BEETROOT_LEAVES = register("beetroot_leaves", new LeavesBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES)));
     public static final Block BEETROOT_SPROUT = register("beetroot_sprout", new BeetrootSproutBlock(AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.EMERALD_GREEN)));
 
-    public static final Block HEART_BEET_CRATE = register("heart_beet_crate", new CompatBlock(ModCompat.FD_ID, AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).strength(2, 3).luminance(s -> 5).sounds(BlockSoundGroup.WOOD)));
+    public static final Block HEART_BEET_CRATE = register("heart_beet_crate", new CompatBlock(ModCompat.FD_ID, AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)
+            .strength(2, 3)
+            .luminance(s -> 5)
+            .sounds(BlockSoundGroup.WOOD)
+    ));
+
+    public static final Block SOULROOT_BLOCK = register("soulroot_block", new CompatPillarBlock(ModCompat.SN_ID, soulrootSettings()));
+    public static final Block SOULROOT_TILES = register("soulroot_tiles", new CompatPillarBlock(ModCompat.SN_ID, soulrootSettings()));
+    public static final Block SOULROOT_LEAVES = register("soulroot_leaves", new CompatLeavesBlock(ModCompat.SN_ID, AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES)));
 
     public static void init() {
         BEETROOT_COOKING_MAP.put(BEETROOT_BLOCK, COOKED_BEETROOT_BLOCK);
@@ -81,14 +92,16 @@ public class BBlocks {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addBefore(Items.OAK_LOG, BEETROOT_BLOCK, BEETROOT_HEART);
-            entries.addBefore(Items.AZALEA_LEAVES, BEETROOT_LEAVES);
+            entries.addBefore(Items.AZALEA_LEAVES, BEETROOT_LEAVES, SOULROOT_LEAVES);
             entries.addBefore(Items.AZALEA, BEETROOT_SPROUT);
             entries.addAfter(Items.HANGING_ROOTS, BEET_ROOTS);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addBefore(Items.STONE,
                     BEETROOT_BLOCK, BEETROOT_HEART, BEETROOT_TILES,
-                    COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES
+                    COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES,
+
+                    SOULROOT_BLOCK, SOULROOT_TILES
             );
         });
 
