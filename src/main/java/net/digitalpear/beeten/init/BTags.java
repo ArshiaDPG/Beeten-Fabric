@@ -28,6 +28,7 @@ public class BTags {
             return BTags.of(id, RegistryKeys.BIOME);
         }
         public static final TagKey<Biome> SPAWNS_BEETROOT_FEATURES = of("spawns_beetroot_features");
+        public static final TagKey<Biome> SPAWNS_SOULROOT_FEATURES = of("spawns_soulroot_features");
 
     }
 }

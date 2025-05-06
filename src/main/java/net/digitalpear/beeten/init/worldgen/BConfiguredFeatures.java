@@ -3,6 +3,7 @@ package net.digitalpear.beeten.init.worldgen;
 import net.digitalpear.beeten.Beeten;
 import net.digitalpear.beeten.common.worldgen.BigBeetrootFeatureConfig;
 import net.digitalpear.beeten.init.BBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
@@ -30,30 +31,52 @@ public class BConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> BIG_BEETROOT = of("big_beetroot");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BIG_BEETROOT_GROWN = of("big_beetroot_grown");
 
-    private static BigBeetrootFeatureConfig config(float chance){
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BIG_SOULROOT = of("big_soulroot");
+
+    private static BigBeetrootFeatureConfig beetrootConfig(float chance){
         Pool<BlockState> ROOT_POOL = Pool.<BlockState>builder()
                 .add(Blocks.ROOTED_DIRT.getDefaultState(), 5)
                 .add(Blocks.DIRT.getDefaultState(), 3)
                 .add(BBlocks.BEETROOT_BLOCK.getDefaultState(), 1)
                 .build();
+        return beetrootConfig(BBlocks.BEETROOT_BLOCK, BBlocks.BEETROOT_HEART, BBlocks.BEETROOT_LEAVES, BBlocks.BEETROOT_SPROUT, ROOT_POOL, BBlocks.BEET_ROOTS, chance);
+    }
+    private static BigBeetrootFeatureConfig beetrootConfig(Block block, Block heart, Block leaves, Block sprout, Pool<BlockState> rootPool, Block roots, float heartChance){
         return new BigBeetrootFeatureConfig(
-                SimpleBlockStateProvider.of(BBlocks.BEETROOT_BLOCK),
-                SimpleBlockStateProvider.of(BBlocks.BEETROOT_HEART),
-                SimpleBlockStateProvider.of(BBlocks.BEETROOT_LEAVES),
-                SimpleBlockStateProvider.of(BBlocks.BEETROOT_SPROUT),
-                new WeightedBlockStateProvider(ROOT_POOL),
-                SimpleBlockStateProvider.of(BBlocks.BEET_ROOTS),
+                SimpleBlockStateProvider.of(block),
+                SimpleBlockStateProvider.of(heart),
+                SimpleBlockStateProvider.of(leaves),
+                SimpleBlockStateProvider.of(sprout),
+                new WeightedBlockStateProvider(rootPool),
+                SimpleBlockStateProvider.of(roots),
                 //Roots Radius
                 UniformIntProvider.create(2, 3), //First Base Height
                 UniformIntProvider.create(2, 3), //Second Base Height
                 UniformIntProvider.create(2, 3), //Branch Height
                 UniformIntProvider.create(4, 7), //Leaf height
                 UniformIntProvider.create(2, 3),
-                ConstantFloatProvider.create(chance));
+                ConstantFloatProvider.create(heartChance));
     }
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
-        ConfiguredFeatures.register(featureRegisterable, BIG_BEETROOT, BFeature.BIG_BEETROOT, config(1.0f));
-        ConfiguredFeatures.register(featureRegisterable, BIG_BEETROOT_GROWN, BFeature.BIG_BEETROOT, config(0.0f));
+        ConfiguredFeatures.register(featureRegisterable, BIG_BEETROOT, BFeature.BIG_BEETROOT, beetrootConfig(1.0f));
+        ConfiguredFeatures.register(featureRegisterable, BIG_BEETROOT_GROWN, BFeature.BIG_BEETROOT, beetrootConfig(0.0f));
+
+        Pool<BlockState> ROOT_POOL = Pool.<BlockState>builder()
+                .add(Blocks.SOUL_SAND.getDefaultState(), 5)
+                .add(Blocks.SOUL_SOIL.getDefaultState(), 3)
+                .add(BBlocks.SOULROOT_BLOCK.getDefaultState(), 1)
+                .build();
+        ConfiguredFeatures.register(featureRegisterable, BIG_SOULROOT, BFeature.BIG_BEETROOT,
+                beetrootConfig(
+                        BBlocks.SOULROOT_BLOCK,
+                        BBlocks.BEETROOT_HEART,
+                        BBlocks.SOULROOT_LEAVES,
+                        BBlocks.SOULROOT_SPROUT,
+                        ROOT_POOL,
+                        BBlocks.BEET_ROOTS,
+                        0.0f
+                )
+        );
     }
 }

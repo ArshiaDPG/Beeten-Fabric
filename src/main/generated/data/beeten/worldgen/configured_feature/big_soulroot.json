@@ -1,0 +1,101 @@
+{
+  "type": "beeten:big_beetroot",
+  "config": {
+    "base_block": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "beeten:soulroot_block",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    },
+    "branch_length": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 7,
+      "min_inclusive": 4
+    },
+    "first_base_height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 3,
+      "min_inclusive": 2
+    },
+    "hanging_roots": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "beeten:beet_roots",
+        "Properties": {
+          "waterlogged": "false"
+        }
+      }
+    },
+    "heart": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "beeten:beetroot_heart",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    },
+    "heart_chance": 0.0,
+    "leaf_height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 3,
+      "min_inclusive": 2
+    },
+    "leaves": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "beeten:soulroot_leaves",
+        "Properties": {
+          "distance": "7",
+          "persistent": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "roots": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:soul_sand"
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "minecraft:soul_soil"
+          },
+          "weight": 3
+        },
+        {
+          "data": {
+            "Name": "beeten:soulroot_block",
+            "Properties": {
+              "axis": "y"
+            }
+          },
+          "weight": 1
+        }
+      ]
+    },
+    "roots_radius": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 3,
+      "min_inclusive": 2
+    },
+    "second_base_height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 3,
+      "min_inclusive": 2
+    },
+    "sprouts": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "beeten:soulroot_sprout"
+      }
+    }
+  }
+}

@@ -6,7 +6,9 @@ import net.digitalpear.beeten.common.block.compat.CompatBlock;
 import net.digitalpear.beeten.common.block.compat.CompatLeavesBlock;
 import net.digitalpear.beeten.common.block.compat.CompatPillarBlock;
 import net.digitalpear.beeten.init.data.ModCompat;
+import net.digitalpear.beeten.init.worldgen.BConfiguredFeatures;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
@@ -17,6 +19,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -80,14 +83,15 @@ public class BBlocks {
     public static final Block SOULROOT_BLOCK = register("soulroot_block", settings -> new CompatPillarBlock(ModCompat.SN_ID, settings), soulrootSettings());
     public static final Block SOULROOT_TILES = register("soulroot_tiles", settings -> new CompatPillarBlock(ModCompat.SN_ID, settings), soulrootSettings());
     public static final Block SOULROOT_LEAVES = register("soulroot_leaves", settings -> new CompatLeavesBlock(ModCompat.SN_ID, settings), AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(MapColor.TERRACOTTA_BLUE));
+    public static final Block SOULROOT_SPROUT = register("soulroot_sprout", settings -> new BeetrootSproutBlock(List.of(ModCompat.SN_ID), BConfiguredFeatures.BIG_SOULROOT, settings), AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.TERRACOTTA_BLUE));
 
     public static void init() {
         BEETROOT_COOKING_MAP.put(BEETROOT_BLOCK, COOKED_BEETROOT_BLOCK);
         BEETROOT_COOKING_MAP.put(BEETROOT_TILES, COOKED_BEETROOT_TILES);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
-            entries.addBefore(Items.OAK_LOG, BEETROOT_BLOCK, SOULROOT_BLOCK);
-            entries.addBefore(Items.AZALEA_LEAVES, BEETROOT_LEAVES, SOULROOT_LEAVES);
+            entries.addBefore(Items.OAK_LOG, BEETROOT_BLOCK);
+            entries.addBefore(Items.AZALEA_LEAVES, BEETROOT_LEAVES);
             entries.addBefore(Items.AZALEA, BEETROOT_SPROUT);
             entries.addAfter(Items.HANGING_ROOTS, BEET_ROOTS);
             entries.addAfter(Items.CREAKING_HEART, BEETROOT_HEART);
@@ -95,11 +99,19 @@ public class BBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addBefore(Items.STONE,
                     BEETROOT_BLOCK, BEETROOT_HEART, BEETROOT_TILES,
-                    COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES,
-
-                    SOULROOT_BLOCK, SOULROOT_TILES
+                    COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES
             );
         });
+        if (FabricLoader.getInstance().isModLoaded(ModCompat.SN_ID)){
+            ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(fabricItemGroupEntries -> {
+                fabricItemGroupEntries.addAfter(COOKED_BEETROOT_TILES, SOULROOT_BLOCK, SOULROOT_TILES);
+            });
+            ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(fabricItemGroupEntries -> {
+                fabricItemGroupEntries.addAfter(BEETROOT_BLOCK, SOULROOT_BLOCK);
+                fabricItemGroupEntries.addAfter(BEETROOT_SPROUT, SOULROOT_SPROUT);
+                fabricItemGroupEntries.addAfter(BEETROOT_LEAVES, SOULROOT_LEAVES);
+            });
+        }
 
         if (ModCompat.isFDLoaded()){
             ItemGroupEvents.modifyEntriesEvent(ModCompat.farmersDelightItemGroup()).register(fabricItemGroupEntries -> {

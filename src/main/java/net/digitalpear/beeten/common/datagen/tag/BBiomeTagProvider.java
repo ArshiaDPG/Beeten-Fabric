@@ -19,5 +19,7 @@ public class BBiomeTagProvider extends FabricTagProvider<Biome> {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(BTags.Biomes.SPAWNS_BEETROOT_FEATURES)
                 .forceAddTag(ConventionalBiomeTags.IS_BEACH);
+
+        getOrCreateTagBuilder(BTags.Biomes.SPAWNS_SOULROOT_FEATURES);
     }
 }

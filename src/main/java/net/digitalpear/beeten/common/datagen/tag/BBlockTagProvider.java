@@ -41,19 +41,22 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         BBlocks.BEETROOT_BLOCK,
                         BBlocks.BEETROOT_TILES,
                         BBlocks.COOKED_BEETROOT_BLOCK,
-                        BBlocks.COOKED_BEETROOT_TILES
+                        BBlocks.COOKED_BEETROOT_TILES,
+                        BBlocks.SOULROOT_BLOCK,
+                        BBlocks.SOULROOT_TILES
                 );
 
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(BBlocks.BEETROOT_BLOCK).add(BBlocks.COOKED_BEETROOT_BLOCK);
-        getOrCreateTagBuilder(BlockTags.LEAVES).add(BBlocks.BEETROOT_LEAVES);
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(BBlocks.BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_BLOCK);
+        getOrCreateTagBuilder(BlockTags.LOGS).add(BBlocks.SOULROOT_BLOCK);
+        getOrCreateTagBuilder(BlockTags.LEAVES).add(BBlocks.BEETROOT_LEAVES, BBlocks.SOULROOT_LEAVES);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(
                 BBlocks.BEETROOT_HEART,
                 BBlocks.BEETROOT_BLOCK, BBlocks.BEETROOT_TILES,
                 BBlocks.COOKED_BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_TILES,
-                BBlocks.HEART_BEET_CRATE
+                BBlocks.HEART_BEET_CRATE, BBlocks.SOULROOT_BLOCK, BBlocks.SOULROOT_LEAVES
         );
-        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(BBlocks.BEETROOT_LEAVES);
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(BBlocks.BEETROOT_LEAVES, BBlocks.SOULROOT_LEAVES);
 
         getOrCreateTagBuilder(BlockTags.CRYSTAL_SOUND_BLOCKS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS, BBlocks.HEART_BEET_CRATE);
         getOrCreateTagBuilder(BlockTags.VIBRATION_RESONATORS).add(BBlocks.BEETROOT_HEART, BBlocks.HEART_BEETS, BBlocks.HEART_BEET_CRATE);

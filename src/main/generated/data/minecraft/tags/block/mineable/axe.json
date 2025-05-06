@@ -5,6 +5,8 @@
     "beeten:beetroot_tiles",
     "beeten:cooked_beetroot_block",
     "beeten:cooked_beetroot_tiles",
-    "beeten:heart_beet_crate"
+    "beeten:heart_beet_crate",
+    "beeten:soulroot_block",
+    "beeten:soulroot_leaves"
   ]
 }

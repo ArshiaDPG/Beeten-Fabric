@@ -47,8 +47,9 @@ public class BModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createLogTexturePool(BBlocks.SOULROOT_BLOCK).stem(BBlocks.SOULROOT_BLOCK);
         blockStateModelGenerator.createLogTexturePool(BBlocks.SOULROOT_TILES).stem(BBlocks.SOULROOT_TILES);
         blockStateModelGenerator.registerSimpleCubeAll(BBlocks.SOULROOT_LEAVES);
-
+        registerBeetrootSprout(blockStateModelGenerator, BBlocks.SOULROOT_SPROUT);
     }
+
     public final void registerCrop(BlockStateModelGenerator blockStateModelGenerator, Block crop, Property<Integer> ageProperty, int... ageTextureIndices) {
         if (ageProperty.getValues().size() != ageTextureIndices.length) {
             throw new IllegalArgumentException();

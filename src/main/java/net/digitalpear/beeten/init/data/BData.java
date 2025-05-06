@@ -27,6 +27,7 @@ public class BData {
         registry.add(BBlocks.BEET_ROOTS, 0.3F);
         registry.add(BBlocks.BEETROOT_LEAVES, 0.5F);
         registry.add(BBlocks.BEETROOT_SPROUT, 0.65F);
+        registry.add(BBlocks.SOULROOT_SPROUT, 0.65F);
         registry.add(BItems.HEART_BEET, 0.65F);
     }
 

@@ -29,6 +29,7 @@ public class BPlacedFeatures {
 
 
     public static final RegistryKey<PlacedFeature> BIG_BEETROOT = of("big_beetroot");
+    public static final RegistryKey<PlacedFeature> BIG_SOULROOT = of("big_soulroot");
     private static final PlacementModifier NOT_IN_SURFACE_WATER_MODIFIER = SurfaceWaterDepthFilterPlacementModifier.of(0);
 
 
@@ -38,12 +39,15 @@ public class BPlacedFeatures {
     public static void bootstrap(Registerable<PlacedFeature> featureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
         RegistryEntry<ConfiguredFeature<?, ?>> bigBeetFeature = registryEntryLookup.getOrThrow(BConfiguredFeatures.BIG_BEETROOT);
+        RegistryEntry<ConfiguredFeature<?, ?>> bigSoulFeature = registryEntryLookup.getOrThrow(BConfiguredFeatures.BIG_SOULROOT);
 
         PlacedFeatures.register(featureRegisterable, BIG_BEETROOT, bigBeetFeature, treeModifiersBuilder(RarityFilterPlacementModifier.of(4)).build());
+        PlacedFeatures.register(featureRegisterable, BIG_SOULROOT, bigSoulFeature, CountMultilayerPlacementModifier.of(8), BiomePlacementModifier.of());
     }
 
 
     public static void init() {
         BiomeModifications.addFeature(BiomeSelectors.tag(BTags.Biomes.SPAWNS_BEETROOT_FEATURES), GenerationStep.Feature.VEGETAL_DECORATION, BIG_BEETROOT);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BTags.Biomes.SPAWNS_SOULROOT_FEATURES), GenerationStep.Feature.VEGETAL_DECORATION, BIG_SOULROOT);
     }
 }
