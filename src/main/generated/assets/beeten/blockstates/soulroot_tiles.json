@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "beeten:block/soulroot_tiles",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "beeten:block/soulroot_tiles"
+    },
+    "axis=z": {
+      "model": "beeten:block/soulroot_tiles",
+      "x": 90
+    }
+  }
+}

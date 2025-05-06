@@ -1,0 +1,40 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "soulfulNether"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_soulroot_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "beeten:soulroot_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "beeten:soulroot_tiles"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_soulroot_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "beeten:soulroot_tiles"
+    ]
+  }
+}
