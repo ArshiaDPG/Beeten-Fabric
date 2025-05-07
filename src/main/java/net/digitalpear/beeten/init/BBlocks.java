@@ -54,16 +54,16 @@ public class BBlocks {
     public static final Block BEET_ROOTS = register("beet_roots", HangingRootsBlock::new, AbstractBlock.Settings.copy(Blocks.HANGING_ROOTS));
 
 
-    public static final Block BEETROOT_HEART = register("beetroot_heart", BeetrootHeartBlock::new, AbstractBlock.Settings.create()
+    public static final Block HEART_BEETS = registerWithoutItem("heart_beets", HearBeetsBlock::new,
+            AbstractBlock.Settings.copy(Blocks.BEETROOTS)
+                    .mapColor(MapColor.PINK)
+    );
+    public static final Block BEETROOT_HEART = register("beetroot_heart", settings -> new BeetrootHeartBlock(BBlocks.HEART_BEETS.getDefaultState(), settings), AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.AMETHYST_BLOCK)
             .ticksRandomly()
             .hardness(4)
             .mapColor(MapColor.PINK)
             .luminance(state -> 5)
-    );
-    public static final Block HEART_BEETS = registerWithoutItem("heart_beets", HearBeetsBlock::new,
-            AbstractBlock.Settings.copy(Blocks.BEETROOTS)
-                    .mapColor(MapColor.PINK)
     );
 
 
@@ -86,6 +86,7 @@ public class BBlocks {
     public static final Block SOULROOT_TILES = register("soulroot_tiles", settings -> new CompatPillarBlock(ModCompat.SN_ID, settings), soulrootSettings());
     public static final Block SOULROOT_LEAVES = register("soulroot_leaves", settings -> new CompatLeavesBlock(ModCompat.SN_ID, settings), AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(MapColor.TERRACOTTA_BLUE));
     public static final Block SOULROOT_SPROUT = register("soulroot_sprout", settings -> new BeetrootSproutBlock(BTags.Blocks.SOULROOT_SPROUT_PLACEABLE_ON, List.of(ModCompat.SN_ID), BConfiguredFeatures.BIG_SOULROOT, settings), AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.TERRACOTTA_BLUE));
+
 
     public static void init() {
         BEETROOT_COOKING_MAP.put(BEETROOT_BLOCK, COOKED_BEETROOT_BLOCK);

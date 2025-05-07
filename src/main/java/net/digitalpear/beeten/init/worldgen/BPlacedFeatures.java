@@ -3,8 +3,10 @@ package net.digitalpear.beeten.init.worldgen;
 import com.google.common.collect.ImmutableList;
 import net.digitalpear.beeten.Beeten;
 import net.digitalpear.beeten.init.BTags;
+import net.digitalpear.beeten.init.data.ModCompat;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
@@ -48,6 +50,8 @@ public class BPlacedFeatures {
 
     public static void init() {
         BiomeModifications.addFeature(BiomeSelectors.tag(BTags.Biomes.SPAWNS_BEETROOT_FEATURES), GenerationStep.Feature.VEGETAL_DECORATION, BIG_BEETROOT);
-        BiomeModifications.addFeature(BiomeSelectors.tag(BTags.Biomes.SPAWNS_SOULROOT_FEATURES), GenerationStep.Feature.VEGETAL_DECORATION, BIG_SOULROOT);
+        if (FabricLoader.getInstance().isModLoaded(ModCompat.SN_ID)){
+            BiomeModifications.addFeature(BiomeSelectors.tag(BTags.Biomes.SPAWNS_SOULROOT_FEATURES), GenerationStep.Feature.VEGETAL_DECORATION, BIG_SOULROOT);
+        }
     }
 }

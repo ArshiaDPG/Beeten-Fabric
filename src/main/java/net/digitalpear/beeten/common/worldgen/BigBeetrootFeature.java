@@ -54,7 +54,7 @@ public class BigBeetrootFeature extends Feature<BigBeetrootFeatureConfig> {
          */
         for (int i = -2; i< config.firstBaseHeight().get(random) + config.secondBaseHeight().get(random); i++){
             if (setBlock(world, startPos.up(i), config.baseBlock().get(random, startPos.up(i)))){
-                branchPos = branchPos.up();
+                branchPos = startPos.up(i);
             }
         }
         for (Direction direction : HORIZONTAL_DIRECTIONS) {
@@ -155,7 +155,7 @@ public class BigBeetrootFeature extends Feature<BigBeetrootFeatureConfig> {
         return placeBlock(world, pos, state, BigBeetrootFeature::replaceable);
     }
     public static boolean placeBlock(StructureWorldAccess world, BlockPos pos,BlockState state, Function<BlockState, Boolean> condition){
-        if (condition.apply(world.getBlockState(pos))){
+        if (condition.apply(world.getBlockState(pos)) && state.canPlaceAt(world, pos)){
             world.setBlockState(pos,
                     state
                             .withIfExists(Properties.WATERLOGGED, world.isWater(pos))

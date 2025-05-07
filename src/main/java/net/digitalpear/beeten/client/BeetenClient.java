@@ -11,7 +11,9 @@ public class BeetenClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 BBlocks.BEETROOT_SPROUT,
+                BBlocks.SOULROOT_SPROUT,
                 BBlocks.BEETROOT_LEAVES,
+                BBlocks.SOULROOT_LEAVES,
                 BBlocks.BEET_ROOTS,
                 BBlocks.HEART_BEETS
         );
