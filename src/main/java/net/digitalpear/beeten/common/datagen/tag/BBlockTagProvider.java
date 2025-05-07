@@ -46,6 +46,14 @@ public class BBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         BBlocks.SOULROOT_TILES
                 );
 
+        getOrCreateTagBuilder(BTags.Blocks.SOULROOT_SPROUT_PLACEABLE_ON)
+                .forceAddTag(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON)
+                .forceAddTag(BlockTags.NYLIUM)
+                .add(
+                        Blocks.SOUL_SOIL,
+                        Blocks.SOUL_SAND
+                );
+
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(BBlocks.BEETROOT_BLOCK, BBlocks.COOKED_BEETROOT_BLOCK);
         getOrCreateTagBuilder(BlockTags.LOGS).add(BBlocks.SOULROOT_BLOCK);
         getOrCreateTagBuilder(BlockTags.LEAVES).add(BBlocks.BEETROOT_LEAVES, BBlocks.SOULROOT_LEAVES);

@@ -22,6 +22,9 @@ public class BTags {
         public static final TagKey<Block> BEETROOT_SPROUT_PLACEABLE_ON = of("beetroot_sprout_placeable_on");
         public static final TagKey<Block> BIG_BEETROOTS_CAN_REPLACE = of("big_beetroots_can_replace");
         public static final TagKey<Block> CAN_CONVERT_T0_HEART_BEETROOTS = of("can_convert_to_heart_beetroot");
+
+        public static final TagKey<Block> SOULROOT_SPROUT_PLACEABLE_ON = of("soulroot_sprout_placeable_on");
+
     }
     public static class Biomes {
         private static TagKey<Biome> of(String id){

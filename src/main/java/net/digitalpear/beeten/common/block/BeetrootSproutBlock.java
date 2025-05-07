@@ -10,6 +10,7 @@ import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.util.math.BlockPos;
@@ -25,6 +26,7 @@ import java.util.List;
 
 public class BeetrootSproutBlock extends PlantBlock implements Fertilizable, CompatRequired {
     public static final MapCodec<BeetrootSproutBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
+            TagKey.codec(RegistryKeys.BLOCK).fieldOf("supporting_blocks").orElse(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON).forGetter(beetrootSproutBlock -> beetrootSproutBlock.supportingFloor),
             Codec.list(Codecs.NON_EMPTY_STRING).fieldOf("required_mods").orElse(List.of()).forGetter(BeetrootSproutBlock::requiredMods),
             RegistryKey.createCodec(RegistryKeys.CONFIGURED_FEATURE).fieldOf("feature").orElse(BConfiguredFeatures.BIG_BEETROOT_GROWN).forGetter((block) -> block.feature),
             createSettingsCodec()
@@ -33,13 +35,19 @@ public class BeetrootSproutBlock extends PlantBlock implements Fertilizable, Com
 
     private final List<String> requiredMods;
     private final RegistryKey<ConfiguredFeature<?, ?>> feature;
+    private final TagKey<Block> supportingFloor;
+
     public BeetrootSproutBlock(Settings settings) {
-        this(List.of(), BConfiguredFeatures.BIG_BEETROOT_GROWN, settings);
+        this(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON, List.of(), BConfiguredFeatures.BIG_BEETROOT_GROWN, settings);
     }
-    public BeetrootSproutBlock(List<String> requiredMods, RegistryKey<ConfiguredFeature<?, ?>> feature, Settings settings) {
+    public BeetrootSproutBlock(TagKey<Block> supportingFloor, List<String> requiredMods, RegistryKey<ConfiguredFeature<?, ?>> feature, Settings settings) {
         super(settings);
         this.requiredMods = requiredMods;
         this.feature = feature;
+        this.supportingFloor = supportingFloor;
+    }
+    public BeetrootSproutBlock(List<String> requiredMods, RegistryKey<ConfiguredFeature<?, ?>> feature, Settings settings){
+        this(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON, requiredMods, feature, settings);
     }
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
@@ -62,7 +70,7 @@ public class BeetrootSproutBlock extends PlantBlock implements Fertilizable, Com
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON);
+        return floor.isIn(supportingFloor);
     }
 
     @Override

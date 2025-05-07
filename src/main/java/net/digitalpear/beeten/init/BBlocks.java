@@ -76,14 +76,16 @@ public class BBlocks {
             );
     public static final Block BEETROOT_SPROUT = register("beetroot_sprout", BeetrootSproutBlock::new, AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.EMERALD_GREEN));
 
-    public static final Block HEART_BEET_CRATE = register("heart_beet_crate", settings -> new CompatBlock(ModCompat.FD_ID, settings),  AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD)
+    public static final Block HEART_BEET_CRATE = register("heart_beet_crate", settings -> new CompatBlock(ModCompat.FD_ID, settings),  AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)
+            .strength(2f, 3f)
+            .sounds(BlockSoundGroup.WOOD)
             .luminance(stata -> 5)
     );
 
     public static final Block SOULROOT_BLOCK = register("soulroot_block", settings -> new CompatPillarBlock(ModCompat.SN_ID, settings), soulrootSettings());
     public static final Block SOULROOT_TILES = register("soulroot_tiles", settings -> new CompatPillarBlock(ModCompat.SN_ID, settings), soulrootSettings());
     public static final Block SOULROOT_LEAVES = register("soulroot_leaves", settings -> new CompatLeavesBlock(ModCompat.SN_ID, settings), AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(MapColor.TERRACOTTA_BLUE));
-    public static final Block SOULROOT_SPROUT = register("soulroot_sprout", settings -> new BeetrootSproutBlock(List.of(ModCompat.SN_ID), BConfiguredFeatures.BIG_SOULROOT, settings), AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.TERRACOTTA_BLUE));
+    public static final Block SOULROOT_SPROUT = register("soulroot_sprout", settings -> new BeetrootSproutBlock(BTags.Blocks.SOULROOT_SPROUT_PLACEABLE_ON, List.of(ModCompat.SN_ID), BConfiguredFeatures.BIG_SOULROOT, settings), AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.TERRACOTTA_BLUE));
 
     public static void init() {
         BEETROOT_COOKING_MAP.put(BEETROOT_BLOCK, COOKED_BEETROOT_BLOCK);

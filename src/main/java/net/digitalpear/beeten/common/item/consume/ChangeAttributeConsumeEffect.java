@@ -33,12 +33,14 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 public record ChangeAttributeConsumeEffect(Identifier identifier, RegistryEntry<EntityAttribute> attribute, double value, EntityAttributeModifier.Operation operation) implements ConsumeEffect {
+
     public static final MapCodec<ChangeAttributeConsumeEffect> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             Identifier.CODEC.fieldOf("identifier").forGetter(changeAttributeConsumeEffect -> changeAttributeConsumeEffect.identifier),
             ClampedEntityAttribute.CODEC.fieldOf("attribute").forGetter(changeAttributeConsumeEffect -> changeAttributeConsumeEffect.attribute),
             Codec.DOUBLE.fieldOf("value").forGetter(changeAttributeConsumeEffect -> changeAttributeConsumeEffect.value),
             EntityAttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(changeAttributeConsumeEffect -> changeAttributeConsumeEffect.operation)
     ).apply(instance, ChangeAttributeConsumeEffect::new));
+
     public static final PacketCodec<RegistryByteBuf, ChangeAttributeConsumeEffect>  PACKET_CODEC = PacketCodec.tuple(
             Identifier.PACKET_CODEC, ChangeAttributeConsumeEffect::identifier,
             ClampedEntityAttribute.PACKET_CODEC, ChangeAttributeConsumeEffect::attribute,
