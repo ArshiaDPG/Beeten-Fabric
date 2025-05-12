@@ -54,11 +54,11 @@ public class BigBeetrootFeature extends Feature<BigBeetrootFeatureConfig> {
          */
         for (int i = -2; i< config.firstBaseHeight().get(random) + config.secondBaseHeight().get(random); i++){
             if (setBlock(world, startPos.up(i), config.baseBlock().get(random, startPos.up(i)))){
-                branchPos = branchPos.up();
+                branchPos = startPos.up(i);
             }
         }
         for (Direction direction : HORIZONTAL_DIRECTIONS) {
-            for (int i = 0; i < config.secondBaseHeight().get(random); i++) {
+            for (int i = -2; i < config.secondBaseHeight().get(random); i++) {
                 setBlock(world, startPos.offset(direction).up(i), config.baseBlock().get(random, startPos.offset(direction).up(i)));
             }
         }

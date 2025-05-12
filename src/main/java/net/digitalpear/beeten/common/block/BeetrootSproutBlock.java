@@ -4,6 +4,7 @@ import net.digitalpear.beeten.init.BTags;
 import net.digitalpear.beeten.init.worldgen.BConfiguredFeatures;
 import net.minecraft.block.AzaleaBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -22,6 +23,7 @@ public class BeetrootSproutBlock extends AzaleaBlock {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+        world.setBlockState(pos, Blocks.AIR.getDefaultState());
         world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap((registry) ->
                 registry.getEntry(BConfiguredFeatures.BIG_BEETROOT_GROWN)).ifPresent((entry) -> {
             entry.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos);
