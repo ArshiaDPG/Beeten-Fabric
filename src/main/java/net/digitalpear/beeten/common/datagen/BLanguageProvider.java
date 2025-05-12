@@ -30,6 +30,7 @@ public class BLanguageProvider extends FabricLanguageProvider {
         makeTranslation(translationBuilder, BBlocks.SOULROOT_TILES);
 
         makeTranslation(translationBuilder, BBlocks.BEET_ROOTS);
+        makeTranslation(translationBuilder, BBlocks.SOUL_ROOTS);
 
         makeTranslation(translationBuilder, BBlocks.BEETROOT_SPROUT);
         makeTranslation(translationBuilder, BBlocks.SOULROOT_SPROUT);

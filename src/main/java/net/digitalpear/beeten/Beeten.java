@@ -1,13 +1,18 @@
 package net.digitalpear.beeten;
 
 import net.digitalpear.beeten.init.*;
+import net.digitalpear.beeten.init.data.BConsumableComponents;
 import net.digitalpear.beeten.init.data.BData;
 import net.digitalpear.beeten.init.worldgen.BFeature;
 import net.digitalpear.beeten.init.worldgen.BPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.block.BlockState;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Items;
+import net.minecraft.server.command.DataCommand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 

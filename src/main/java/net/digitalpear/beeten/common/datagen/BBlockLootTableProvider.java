@@ -56,6 +56,7 @@ public class BBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(BBlocks.SOULROOT_TILES);
         addDrop(BBlocks.SOULROOT_SPROUT);
         addDrop(BBlocks.SOULROOT_LEAVES, beetrootLeavesDrops(BBlocks.SOULROOT_LEAVES, BBlocks.SOULROOT_SPROUT, SAPLING_DROP_CHANCE));
+        addDrop(BBlocks.SOUL_ROOTS);
     }
 
     public LootTable.Builder beetrootLeavesDrops(Block leaves, Block sapling, float... saplingChance) {

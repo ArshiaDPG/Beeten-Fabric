@@ -23,7 +23,7 @@
     "hanging_roots": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "beeten:beet_roots",
+        "Name": "beeten:soul_roots",
         "Properties": {
           "waterlogged": "false"
         }

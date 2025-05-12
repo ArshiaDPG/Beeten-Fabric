@@ -75,6 +75,7 @@ public class BeetrootSproutBlock extends PlantBlock implements Fertilizable, Com
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+        world.setBlockState(pos, Blocks.AIR.getDefaultState());
         world.getRegistryManager().getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap((registry) ->
                 registry.getOptional(feature)).ifPresent((entry) -> {
             entry.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos);

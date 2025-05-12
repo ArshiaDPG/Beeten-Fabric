@@ -74,7 +74,7 @@ public class BConfiguredFeatures {
                         BBlocks.SOULROOT_LEAVES,
                         BBlocks.SOULROOT_SPROUT,
                         ROOT_POOL,
-                        BBlocks.BEET_ROOTS,
+                        BBlocks.SOUL_ROOTS,
                         0.0f
                 )
         );

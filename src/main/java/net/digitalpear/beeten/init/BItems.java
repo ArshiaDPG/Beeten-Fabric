@@ -3,9 +3,11 @@ package net.digitalpear.beeten.init;
 import net.digitalpear.beeten.Beeten;
 import net.digitalpear.beeten.init.data.BConsumableComponents;
 import net.digitalpear.beeten.init.data.BFoodComponents;
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -29,6 +31,9 @@ public class BItems {
     );
 
     public static void init() {
+//        DefaultItemComponentEvents.MODIFY.register(modifyContext -> {
+//            modifyContext.modify(Items.BEETROOT_SOUP, builder -> builder.add(DataComponentTypes.CONSUMABLE, BConsumableComponents.BEETROOT_SOUP));
+//        });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(fabricItemGroupEntries -> {
             fabricItemGroupEntries.addAfter(Items.BEETROOT, HEART_BEET);
         });

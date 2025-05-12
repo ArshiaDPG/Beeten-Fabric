@@ -7,6 +7,9 @@ import net.digitalpear.beeten.common.block.compat.CompatLeavesBlock;
 import net.digitalpear.beeten.common.block.compat.CompatPillarBlock;
 import net.digitalpear.beeten.init.data.ModCompat;
 import net.digitalpear.beeten.init.worldgen.BConfiguredFeatures;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
+import net.fabricmc.fabric.api.item.v1.EnchantmentEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
@@ -86,7 +89,7 @@ public class BBlocks {
     public static final Block SOULROOT_TILES = register("soulroot_tiles", settings -> new CompatPillarBlock(ModCompat.SN_ID, settings), soulrootSettings());
     public static final Block SOULROOT_LEAVES = register("soulroot_leaves", settings -> new CompatLeavesBlock(ModCompat.SN_ID, settings), AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(MapColor.TERRACOTTA_BLUE));
     public static final Block SOULROOT_SPROUT = register("soulroot_sprout", settings -> new BeetrootSproutBlock(BTags.Blocks.SOULROOT_SPROUT_PLACEABLE_ON, List.of(ModCompat.SN_ID), BConfiguredFeatures.BIG_SOULROOT, settings), AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.TERRACOTTA_BLUE));
-
+    public static final Block SOUL_ROOTS = register("soul_roots", HangingRootsBlock::new, AbstractBlock.Settings.copy(BEET_ROOTS));
 
     public static void init() {
         BEETROOT_COOKING_MAP.put(BEETROOT_BLOCK, COOKED_BEETROOT_BLOCK);
@@ -113,6 +116,7 @@ public class BBlocks {
                 fabricItemGroupEntries.addAfter(BEETROOT_BLOCK, SOULROOT_BLOCK);
                 fabricItemGroupEntries.addAfter(BEETROOT_SPROUT, SOULROOT_SPROUT);
                 fabricItemGroupEntries.addAfter(BEETROOT_LEAVES, SOULROOT_LEAVES);
+                fabricItemGroupEntries.addAfter(BEET_ROOTS, SOUL_ROOTS);
             });
         }
 

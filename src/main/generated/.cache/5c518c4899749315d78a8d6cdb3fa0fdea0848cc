@@ -5,6 +5,7 @@ bb0a058e777259ecac32090a325a664eebd0d4d0 data/beeten/tags/block/beetroot_sprout_
 60e866e89808ecf98ea62bf65b41a75d994cffed data/beeten/tags/block/heart_beets_placeable_on.json
 b03c40cbd5d93eff1f316cfe3441c6207233e022 data/beeten/tags/block/soulroot_sprout_placeable_on.json
 67c23c8fce512bed63deda112c364810f4ee7095 data/minecraft/tags/block/crystal_sound_blocks.json
+4ce2afa7c02d97f670abd4258c81a4fe7804c419 data/minecraft/tags/block/enderman_holdable.json
 de313d33ecacb9659c6f15b1c02852a050ce78dc data/minecraft/tags/block/leaves.json
 a4ba7383befe5c199ca9d65ca1819094c327b6dd data/minecraft/tags/block/logs.json
 37c57c50354fc1c26c6ded28ad755562bdeb1234 data/minecraft/tags/block/logs_that_burn.json
