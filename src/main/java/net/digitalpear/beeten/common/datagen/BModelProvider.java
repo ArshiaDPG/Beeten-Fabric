@@ -49,11 +49,6 @@ public class BModelProvider extends FabricModelProvider {
          */
 
         registerCrate(blockStateModelGenerator, BBlocks.HEART_BEET_CRATE);
-
-        blockStateModelGenerator.registerLog(BBlocks.SOULROOT_BLOCK).stem(BBlocks.SOULROOT_BLOCK);
-        blockStateModelGenerator.registerLog(BBlocks.SOULROOT_TILES).stem(BBlocks.SOULROOT_TILES);
-        blockStateModelGenerator.registerSimpleCubeAll(BBlocks.SOULROOT_LEAVES);
-
     }
 
     public final void registerSeedlessCrop(BlockStateModelGenerator blockStateModelGenerator, Block crop, Property<Integer> ageProperty, int... ageTextureIndices) {

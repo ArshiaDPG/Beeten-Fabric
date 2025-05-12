@@ -30,7 +30,6 @@ public class BRecipeProvider extends FabricRecipeProvider {
             CookingRecipeJsonBuilder.createSmoking(Ingredient.ofItems(input), RecipeCategory.BUILDING_BLOCKS, output, 0.5f, 100).criterion(hasItem(input), conditionsFromItem(input)).offerTo(recipeExporter, getName(output, "smoking"));
         });
         offerCutCopperRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, BBlocks.BEETROOT_TILES, BBlocks.BEETROOT_BLOCK);
-        offerCutCopperRecipe(withConditions(recipeExporter, ResourceConditions.allModsLoaded(ModCompat.SN_ID)), RecipeCategory.BUILDING_BLOCKS, BBlocks.SOULROOT_TILES, BBlocks.SOULROOT_BLOCK);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, BBlocks.BEETROOT_HEART)
                 .pattern("BBB")

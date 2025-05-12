@@ -81,27 +81,20 @@ public class BBlocks {
             .luminance(s -> 5)
             .sounds(BlockSoundGroup.WOOD)
     ));
-
-    public static final Block SOULROOT_BLOCK = register("soulroot_block", new CompatPillarBlock(ModCompat.SN_ID, soulrootSettings()));
-    public static final Block SOULROOT_TILES = register("soulroot_tiles", new CompatPillarBlock(ModCompat.SN_ID, soulrootSettings()));
-    public static final Block SOULROOT_LEAVES = register("soulroot_leaves", new CompatLeavesBlock(ModCompat.SN_ID, AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES)));
-
     public static void init() {
         BEETROOT_COOKING_MAP.put(BEETROOT_BLOCK, COOKED_BEETROOT_BLOCK);
         BEETROOT_COOKING_MAP.put(BEETROOT_TILES, COOKED_BEETROOT_TILES);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addBefore(Items.OAK_LOG, BEETROOT_BLOCK, BEETROOT_HEART);
-            entries.addBefore(Items.AZALEA_LEAVES, BEETROOT_LEAVES, SOULROOT_LEAVES);
+            entries.addBefore(Items.AZALEA_LEAVES, BEETROOT_LEAVES);
             entries.addBefore(Items.AZALEA, BEETROOT_SPROUT);
             entries.addAfter(Items.HANGING_ROOTS, BEET_ROOTS);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addBefore(Items.STONE,
                     BEETROOT_BLOCK, BEETROOT_HEART, BEETROOT_TILES,
-                    COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES,
-
-                    SOULROOT_BLOCK, SOULROOT_TILES
+                    COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES
             );
         });
 
