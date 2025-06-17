@@ -1,6 +1,9 @@
 {
   "values": [
-    "#beeten:heart_beets_placeable_on",
+    {
+      "id": "#beeten:heart_beets_placeable_on",
+      "required": false
+    },
     "beeten:beetroot_heart",
     "beeten:beetroot_block",
     "beeten:beetroot_tiles",

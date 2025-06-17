@@ -1,15 +1,15 @@
 package net.digitalpear.beeten.init;
 
 import net.digitalpear.beeten.Beeten;
-import net.digitalpear.beeten.common.block.*;
+import net.digitalpear.beeten.common.block.BeetrootHeartBlock;
+import net.digitalpear.beeten.common.block.BeetrootLeavesBlock;
+import net.digitalpear.beeten.common.block.BeetrootSproutBlock;
+import net.digitalpear.beeten.common.block.HearBeetsBlock;
 import net.digitalpear.beeten.common.block.compat.CompatBlock;
 import net.digitalpear.beeten.common.block.compat.CompatLeavesBlock;
 import net.digitalpear.beeten.common.block.compat.CompatPillarBlock;
 import net.digitalpear.beeten.init.data.ModCompat;
 import net.digitalpear.beeten.init.worldgen.BConfiguredFeatures;
-import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
-import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
-import net.fabricmc.fabric.api.item.v1.EnchantmentEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
@@ -51,6 +51,15 @@ public class BBlocks {
     private static AbstractBlock.Settings cookedBeetrootSettings(){
         return beetrootSettings().mapColor(MapColor.DARK_CRIMSON);
     }
+//    public static final BeetrootFamily BEETROOT = new BeetrootFamily(Beeten.id("beetroot"), new BeetrootFamily.Settings());
+//    public static final BeetrootFamily SOULROOT = new BeetrootFamily(Beeten.id("soulroot"), new BeetrootFamily.Settings()
+//            .setBaseSettings(soulrootSettings())
+//            .setMapColor(MapColor.WHITE_GRAY)
+//            .setLeavesMapColor(MapColor.TERRACOTTA_BLUE)
+//            .setCondition(List.of(ModCompat.SN_ID))
+//            .setSproutFeature(BConfiguredFeatures.BIG_SOULROOT)
+//            .setSproutSupporting(BTags.Blocks.SOULROOT_SPROUT_PLACEABLE_ON)
+//    );
 
     public static final Block BEETROOT_BLOCK = register("beetroot_block", PillarBlock::new, beetrootSettings());
     public static final Block BEETROOT_TILES = register("beetroot_tiles", PillarBlock::new, beetrootSettings());
@@ -79,15 +88,15 @@ public class BBlocks {
             );
     public static final Block BEETROOT_SPROUT = register("beetroot_sprout", BeetrootSproutBlock::new, AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.EMERALD_GREEN));
 
-    public static final Block HEART_BEET_CRATE = register("heart_beet_crate", settings -> new CompatBlock(ModCompat.FD_ID, settings),  AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)
+    public static final Block HEART_BEET_CRATE = register("heart_beet_crate", settings -> new CompatBlock(ModCompat::isFDLoaded, settings),  AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)
             .strength(2f, 3f)
             .sounds(BlockSoundGroup.WOOD)
             .luminance(stata -> 5)
     );
 
-    public static final Block SOULROOT_BLOCK = register("soulroot_block", settings -> new CompatPillarBlock(ModCompat.SN_ID, settings), soulrootSettings());
-    public static final Block SOULROOT_TILES = register("soulroot_tiles", settings -> new CompatPillarBlock(ModCompat.SN_ID, settings), soulrootSettings());
-    public static final Block SOULROOT_LEAVES = register("soulroot_leaves", settings -> new CompatLeavesBlock(ModCompat.SN_ID, settings), AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(MapColor.TERRACOTTA_BLUE));
+    public static final Block SOULROOT_BLOCK = register("soulroot_block", settings -> new CompatPillarBlock(ModCompat::isSNLoaded, settings), soulrootSettings());
+    public static final Block SOULROOT_TILES = register("soulroot_tiles", settings -> new CompatPillarBlock(ModCompat::isSNLoaded, settings), soulrootSettings());
+    public static final Block SOULROOT_LEAVES = register("soulroot_leaves", settings -> new CompatLeavesBlock(ModCompat::isSNLoaded, settings), AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES).mapColor(MapColor.TERRACOTTA_BLUE));
     public static final Block SOULROOT_SPROUT = register("soulroot_sprout", settings -> new BeetrootSproutBlock(BTags.Blocks.SOULROOT_SPROUT_PLACEABLE_ON, List.of(ModCompat.SN_ID), BConfiguredFeatures.BIG_SOULROOT, settings), AbstractBlock.Settings.copy(Blocks.AZALEA).mapColor(MapColor.TERRACOTTA_BLUE));
     public static final Block SOUL_ROOTS = register("soul_roots", HangingRootsBlock::new, AbstractBlock.Settings.copy(BEET_ROOTS));
 

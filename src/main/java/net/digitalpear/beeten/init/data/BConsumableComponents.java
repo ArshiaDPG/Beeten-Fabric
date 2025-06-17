@@ -15,8 +15,4 @@ public class BConsumableComponents {
     public static final ConsumableComponent HEART_BEET = ConsumableComponents.food()
             .consumeEffect(new ChangeAttributeConsumeEffect(Beeten.id("beet_healing"), EntityAttributes.MAX_HEALTH, 1.0f, EntityAttributeModifier.Operation.ADD_VALUE))
             .build();
-
-//    public static final ConsumableComponent BEETROOT_SOUP = ConsumableComponents.food()
-//            .consumeEffect(new ApplyEffectsConsumeEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*5)))
-//            .build();
 }

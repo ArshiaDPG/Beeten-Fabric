@@ -1,5 +1,8 @@
 {
   "values": [
-    "#minecraft:azalea_root_replaceable"
+    {
+      "id": "#minecraft:azalea_root_replaceable",
+      "required": false
+    }
   ]
 }

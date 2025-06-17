@@ -21,7 +21,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:heart_beet"
+        "recipe": "beeten:heart_beet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -34,7 +34,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:heart_beet"
+      "beeten:heart_beet"
     ]
   }
 }

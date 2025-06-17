@@ -1,6 +1,6 @@
 package net.digitalpear.beeten.common.block;
 
-import net.digitalpear.beeten.init.BBlocks;
+import net.digitalpear.beeten.common.block.compat.CompatRequired;
 import net.digitalpear.beeten.init.BTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
@@ -11,15 +11,22 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 
-public class BeetrootHeartBlock extends PillarBlock {
+import java.util.function.Supplier;
+
+public class BeetrootHeartBlock extends PillarBlock implements CompatRequired {
     public static final int MAX_ATTEMPTS = 3;
     public static final int H_RANGE = 6;
     public static final int V_RANGE = 1;
     private final BlockState convertingState;
+    private final Supplier<Boolean> hasRequiredMods;
 
-    public BeetrootHeartBlock(BlockState convertingState, Settings settings) {
+    public BeetrootHeartBlock(Supplier<Boolean> hasRequiredMods, BlockState convertingState, Settings settings){
         super(settings);
         this.convertingState = convertingState;
+        this.hasRequiredMods = hasRequiredMods;
+    }
+    public BeetrootHeartBlock(BlockState convertingState, Settings settings) {
+        this(() -> true, convertingState, settings);
     }
 
     @Override
@@ -52,5 +59,10 @@ public class BeetrootHeartBlock extends PillarBlock {
     }
     public int getVerticalRange(){
         return V_RANGE;
+    }
+
+    @Override
+    public boolean hasRequiredMods() {
+        return hasRequiredMods.get();
     }
 }

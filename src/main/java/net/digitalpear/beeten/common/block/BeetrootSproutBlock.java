@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.digitalpear.beeten.common.block.compat.CompatRequired;
 import net.digitalpear.beeten.init.BTags;
 import net.digitalpear.beeten.init.worldgen.BConfiguredFeatures;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.registry.RegistryKey;
@@ -27,7 +28,7 @@ import java.util.List;
 public class BeetrootSproutBlock extends PlantBlock implements Fertilizable, CompatRequired {
     public static final MapCodec<BeetrootSproutBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             TagKey.codec(RegistryKeys.BLOCK).fieldOf("supporting_blocks").orElse(BTags.Blocks.BEETROOT_SPROUT_PLACEABLE_ON).forGetter(beetrootSproutBlock -> beetrootSproutBlock.supportingFloor),
-            Codec.list(Codecs.NON_EMPTY_STRING).fieldOf("required_mods").orElse(List.of()).forGetter(BeetrootSproutBlock::requiredMods),
+            Codec.list(Codecs.NON_EMPTY_STRING).fieldOf("required_mods").orElse(List.of()).forGetter(beetrootSproutBlock -> beetrootSproutBlock.requiredMods),
             RegistryKey.createCodec(RegistryKeys.CONFIGURED_FEATURE).fieldOf("feature").orElse(BConfiguredFeatures.BIG_BEETROOT_GROWN).forGetter((block) -> block.feature),
             createSettingsCodec()
     ).apply(instance, BeetrootSproutBlock::new));
@@ -81,9 +82,8 @@ public class BeetrootSproutBlock extends PlantBlock implements Fertilizable, Com
             entry.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos);
         });
     }
-
     @Override
-    public List<String> requiredMods() {
-        return this.requiredMods;
+    public boolean hasRequiredMods() {
+        return requiredMods.stream().anyMatch(id -> FabricLoader.getInstance().isModLoaded(id));
     }
 }

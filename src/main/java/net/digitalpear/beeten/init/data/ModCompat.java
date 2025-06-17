@@ -12,6 +12,9 @@ public class ModCompat {
     public static boolean isFDLoaded(){
         return FabricLoader.getInstance().isModLoaded(FD_ID);
     }
+    public static boolean isSNLoaded(){
+        return FabricLoader.getInstance().isModLoaded(SN_ID);
+    }
 
     public static RegistryKey<ItemGroup> farmersDelightItemGroup(){
         return RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of(FD_ID, FD_ID));

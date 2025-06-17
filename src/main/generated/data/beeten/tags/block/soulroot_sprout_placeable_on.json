@@ -1,7 +1,13 @@
 {
   "values": [
-    "#beeten:beetroot_sprout_placeable_on",
-    "#minecraft:nylium",
+    {
+      "id": "#beeten:beetroot_sprout_placeable_on",
+      "required": false
+    },
+    {
+      "id": "#minecraft:nylium",
+      "required": false
+    },
     "minecraft:soul_soil",
     "minecraft:soul_sand"
   ]

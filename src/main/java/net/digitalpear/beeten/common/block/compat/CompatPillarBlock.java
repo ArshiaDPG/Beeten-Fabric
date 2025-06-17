@@ -3,17 +3,14 @@ package net.digitalpear.beeten.common.block.compat;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 
-import java.util.List;
+import java.util.function.Supplier;
 
 public class CompatPillarBlock extends PillarBlock implements CompatRequired {
-    private final List<String> requiredModIds;
+    private final Supplier<Boolean> hasRequiredMods;
 
-    public CompatPillarBlock(String requiredModId, Settings settings) {
-        this(List.of(requiredModId), settings);
-    }
-    public CompatPillarBlock(List<String> requiredModIds, Settings settings) {
+    public CompatPillarBlock(Supplier<Boolean> hasRequiredMods, Settings settings) {
         super(settings);
-        this.requiredModIds = requiredModIds;
+        this.hasRequiredMods = hasRequiredMods;
     }
 
     @Override
@@ -22,7 +19,7 @@ public class CompatPillarBlock extends PillarBlock implements CompatRequired {
     }
 
     @Override
-    public List<String> requiredMods() {
-        return requiredModIds;
+    public boolean hasRequiredMods() {
+        return hasRequiredMods.get();
     }
 }

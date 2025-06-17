@@ -1,20 +1,16 @@
 package net.digitalpear.beeten.common.block.compat;
 
 import net.digitalpear.beeten.common.block.BeetrootLeavesBlock;
-import net.minecraft.block.LeavesBlock;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 
-import java.util.List;
+import java.util.function.Supplier;
 
 public class CompatLeavesBlock extends BeetrootLeavesBlock implements CompatRequired {
-    private final List<String> requiredModIds;
+    private final Supplier<Boolean> hasRequiredMods;
 
-    public CompatLeavesBlock(String requiredModId, Settings settings) {
-        this(List.of(requiredModId), settings);
-    }
-    public CompatLeavesBlock(List<String> requiredModIds, Settings settings) {
+    public CompatLeavesBlock(Supplier<Boolean> hasRequiredMods, Settings settings) {
         super(0.01f, settings);
-        this.requiredModIds = requiredModIds;
+        this.hasRequiredMods = hasRequiredMods;
     }
 
     @Override
@@ -23,7 +19,7 @@ public class CompatLeavesBlock extends BeetrootLeavesBlock implements CompatRequ
     }
 
     @Override
-    public List<String> requiredMods() {
-        return requiredModIds;
+    public boolean hasRequiredMods() {
+        return false;
     }
 }

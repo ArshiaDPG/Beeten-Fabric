@@ -34,7 +34,6 @@ public class Beeten implements ModInitializer {
         BConsumeEffects.init();
         BGameRules.init();
 
-
         ServerEntityEvents.ENTITY_LOAD.register((entity, serverWorld) -> {
             if (entity.getType() == EntityType.LIGHTNING_BOLT){
                 BlockPos floorPos = entity.getBlockPos().down();
