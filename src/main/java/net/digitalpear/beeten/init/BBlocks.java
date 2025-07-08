@@ -117,7 +117,7 @@ public class BBlocks {
                     COOKED_BEETROOT_BLOCK, COOKED_BEETROOT_TILES
             );
         });
-        if (FabricLoader.getInstance().isModLoaded(ModCompat.SN_ID)){
+        if (ModCompat.isSNLoaded()){
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(fabricItemGroupEntries -> {
                 fabricItemGroupEntries.addAfter(COOKED_BEETROOT_TILES, SOULROOT_BLOCK, SOULROOT_TILES);
             });
