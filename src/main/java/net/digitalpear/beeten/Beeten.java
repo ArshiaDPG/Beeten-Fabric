@@ -6,15 +6,19 @@ import net.digitalpear.beeten.init.data.BData;
 import net.digitalpear.beeten.init.worldgen.BFeature;
 import net.digitalpear.beeten.init.worldgen.BPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.Items;
 import net.minecraft.server.command.DataCommand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+
+import java.util.Optional;
 
 public class Beeten implements ModInitializer {
 
@@ -33,6 +37,16 @@ public class Beeten implements ModInitializer {
         BData.init();
         BConsumeEffects.init();
         BGameRules.init();
+
+        /*
+            Removes the heart beet modifier after player dies.
+            This already happens due to a bug, but since some mods fix this bug, I thought it best to do it manually.
+         */
+        ServerLivingEntityEvents.AFTER_DEATH.register((livingEntity, damageSource) -> {
+            if (livingEntity.getAttributes().hasAttribute(EntityAttributes.MAX_HEALTH)) {
+                Optional.ofNullable(livingEntity.getAttributeInstance(EntityAttributes.MAX_HEALTH)).ifPresent(attributeInstance -> attributeInstance.removeModifier(BConsumableComponents.HEART_BEET_MODIFIER_ID));
+            }
+        });
 
         ServerEntityEvents.ENTITY_LOAD.register((entity, serverWorld) -> {
             if (entity.getType() == EntityType.LIGHTNING_BOLT){
